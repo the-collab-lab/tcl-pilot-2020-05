@@ -12,7 +12,7 @@ This project is based on [whats-near.me](https://whats-near.me), a mobile web ap
 
 ### Locations for things
 
-* Site: [https://tcl-pilot-2020-05.netlify.com](https://tcl-6-smart-shopping-list.netlify.com)
+* Site: [https://tcl-pilot-2020-05.netlify.com](https://tcl-pilot-2020-05.netlify.com)
 * Repo: [https://github.com/the-collab-lab/tcl-pilot-2020-05](https://github.com/the-collab-lab/tcl-pilot-2020-05)
 * Clone URL: `git@github.com:the-collab-lab/tcl-pilot-2020-05.git`
 * Issue list: [https://github.com/the-collab-lab/tcl-pilot-2020-05/projects/1](https://github.com/the-collab-lab/tcl-pilot-2020-05/projects/1)
