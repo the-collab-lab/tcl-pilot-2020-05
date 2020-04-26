@@ -112,10 +112,9 @@ The project is organized in GitHub as a set of [user stories](https://www.mounta
 A task or story is “done” when the following are all true:
 
 * The AC have been met
-* Tests have been written to validate the “[happy path](https://en.wikipedia.org/wiki/Happy_path)”
-* In the case of a UI feature, it has been reviewed for [accessibility](https://accessibilityinsights.io/)
 * The code to complete the task or implement the feature has been reviewed and approved by the other pair of developers
-* The [Product Owner](https://www.agilealliance.org/glossary/product-owner/) (i.e. Andrew or 1 of the mentors) has accepted the work as satisfactorily meeting the requirements
+* The code has been reviewed and approved by one of the mentors
+* The [Product Owner](https://www.agilealliance.org/glossary/product-owner/) (i.e. one of the mentors) has accepted the work as satisfactorily meeting the requirements
 
 The “backlog” (the collection of stories) represents the work needed to complete the project. At the point when all of the stories are done, we should have a working app!
 
@@ -133,9 +132,9 @@ Work will be done on feature branches in git. Branches should be named in the fo
 
 For example:
 
-	stc-an-connect-to-firestore
+	stc-an-render-map
 
-The hypothetical example above has Stacie Taylor-Cima and Alejandro Ñáñez working together on connecting the app to Firestore. Each of them will be able to work on the feature branch independently, but only one of them will submit the merge request when the work is ready (described in more detail below).
+The hypothetical example above has Stacie Taylor-Cima and Alejandro Ñáñez working together to get a map to render. Each of them will be able to work on the feature branch independently, but only one of them will submit the merge request when the work is ready (described in more detail below).
 
 When you’re ready to start work on a feature, one person in your pair should create a local branch following the naming convention above, then push the branch to GitHub so your pair buddy can pull it down to their local environment. The following steps should work to do just this:
 
@@ -144,16 +143,16 @@ When you’re ready to start work on a feature, one person in your pair should c
 
 When you and your pair partner have working code that you believe is ready to be merged to `master` and deployed, you will follow the following steps:
 
-1. Create a “[pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)” (PR).
-2. Notify the other pair team in Slack that you have a new PR for them to review.
-3. Incorporate feedback from the other pair team into your work until both you and they are satisfied the code is ready to be merged.
-4. Request that Andrew or one of the mentors review the PR for final approval.
-5. Once approved, merge the PR into `master`. (Your code will be built and deployed to production automatically thanks to [Netlify](https://www.netlify.com/).)
-6. Check your work on the [production site](https://tcl-pilot-2020-05.netlify.com).
+1. Create a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) (PR) describing the work done, the before and after states, and how to validate that the changes work as intended
+2. Notify the other pair team in Slack that you have a new PR for them to review
+3. Incorporate feedback from the other pair team into your work until both you and they are satisfied the code is ready to be merged
+4. Request that Andrew or one of the mentors review the PR for final approval
+5. Once approved, merge the PR into `master` (your code will be built and deployed to production automatically thanks to [Netlify](https://www.netlify.com/))
+6. Check your work on the [production site](https://tcl-pilot-2020-05.netlify.com)
 7. Celebrate! 🥳
 
 ### What else?
 
-I’m around 💯% sure I’m forgetting or glossing over something important, so please be noisy on Slack as things come up. The mentors and I will do our best to get you unstuck. Also, lean on each other for help as well! Finally, work in the open so everyone can benefit from your questions.
+I’m around 💯% sure I’m forgetting or glossing over something important, so please be noisy on Slack as things come up. The mentors and I will do our best to get you un-stuck. Also, lean on each other for help as well! Finally, work in the open so everyone can benefit from your questions.
 
-![gif of a My Little Pony pulling on goggles, with a determined look on their face, saying, “Let’s do this”.](http://giphygifs.s3.amazonaws.com/media/PuWNMebKGIKNG/giphy.gif)
+![GIF of George-Michael Bluth saying to his dad, “It’s happening, isn’t it”.](https://segdeha.com/assets/imgs/its-happening-isnt-it.gif)
