@@ -8,6 +8,8 @@ The goal of the project is to build a mobile web app that shows you [nearby Wiki
 
 This project is based on [whats-near.me](https://whats-near.me), a mobile web app I recently built for my own use. You’re welcome to look at the [GitHub repo for that site](https://github.com/segdeha/whats-near.me) if you get stuck and want a hint!
 
+![Screenshots from whats-near.me](https://raw.githubusercontent.com/the-collab-lab/tcl-pilot-2020-05/master/screenshots.png)
+
 ### Locations for things
 
 * Site: [https://tcl-pilot-2020-05.netlify.com](https://tcl-6-smart-shopping-list.netlify.com)
