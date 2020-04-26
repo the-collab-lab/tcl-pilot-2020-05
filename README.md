@@ -1,3 +1,17 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/57dfe9bb-092a-49fa-b0d1-adab5baf5bed/deploy-status)](https://app.netlify.com/sites/tcl-pilot-2020-05/deploys)
+
+# Overview
+
+The goal of this project is to create a mobile web app that shows you [nearby Wikipedia entries](https://thenextweb.com/media/2013/05/29/wikipedia-surfaces-articles-based-on-your-location-and-wants-you-to-add-photos-with-your-mobile-phone/).
+
+Upon opening the app, users can pan and zoom to discover points of interest. They can also give the app access to their location to find points of interest near them.
+
+The app will work in many of the same ways as [whats-near.me](https://whats-near.me) (on which our project is based).
+
+For additional details, please check out the [project brief](PROJECT-BRIEF.md).
+
+<hr>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
