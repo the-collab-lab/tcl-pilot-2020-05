@@ -3,6 +3,7 @@
 ## Cohort Participants
 
 [Ashling Hennessy](https://github.com/AshlingH)
+[Matthew Hughes](https://github.com/mjhughes707)
 
 ## Cohort Mentors
 
