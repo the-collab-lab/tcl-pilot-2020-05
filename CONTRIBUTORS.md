@@ -5,6 +5,7 @@
 - [Ashling Hennessy](https://github.com/AshlingH)
 - [Matthew Hughes](https://github.com/mjhughes707)
 - [Jennifer Batara](https://github.com/jendevelops)
+- [Amber Jiles](https://github.com/ajiles91)
 
 ## Cohort Mentors
 
