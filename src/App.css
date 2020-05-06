@@ -17,7 +17,7 @@
 
 
 .footer{
-  min-height:calc(33vh- 2.5 rem);
+  min-height:calc(33vh- 2.5rem);
   display:block;
   text-align: center;
 }
