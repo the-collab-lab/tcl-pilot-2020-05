@@ -10,14 +10,18 @@
   letter-spacing: 1px;
 }
 
-.main{
-  min-height:calc(67vh - 2.5rem);
-
+.main {
+  min-height: calc(66.67vh - 1.25rem);
 }
 
+.footer {
+  min-height: calc(33.33vh - 1.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-.footer{
-  min-height:calc(33vh- 2.5rem);
-  display:block;
-  text-align: center;
+.footer p {
+  margin: 0.75rem 0;
 }
