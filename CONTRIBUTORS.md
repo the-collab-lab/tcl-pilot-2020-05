@@ -2,9 +2,11 @@
 
 ## Cohort Participants
 
-[Ashling Hennessy](https://github.com/AshlingH)
-[Matthew Hughes](https://github.com/mjhughes707)
+- [Ashling Hennessy](https://github.com/AshlingH)
+- [Matthew Hughes](https://github.com/mjhughes707)
+- [Jennifer Batara](https://github.com/jendevelops)
+- [Amber Jiles](https://github.com/ajiles91)
 
 ## Cohort Mentors
 
-[Andrew Hedges](https://github.com/segdeha)
+- [Andrew Hedges](https://github.com/segdeha)
