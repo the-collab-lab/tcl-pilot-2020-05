@@ -1,5 +1,6 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import MyLocation from './MyLocation';
 
 function Map(){
     const defaultLocation = {
@@ -17,8 +18,9 @@ function Map(){
             defaultCenter={defaultLocation.center}
             defaultZoom={defaultLocation.zoom}
             >
-            
+            <MyLocation/>
             </GoogleMapReact> 
+            
         </div>
     )
     
