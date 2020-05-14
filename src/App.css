@@ -21,3 +21,36 @@
   display:block;
   text-align: center;
 }
+
+
+.MyLocation {
+  animation: pulseDot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
+  background-color: var(--pulsating-dot, rgb(25, 0, 255));
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 10px;
+  width: 10px;
+}
+
+.MyLocation:before {
+  animation: pulseRing 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  background-color: var(--pulsating-dot, rgb(255, 0, 255));
+  border-radius: 40px;
+  content: '';
+  display: block;
+  height: 300%;
+  left: -100%;
+  position: relative;
+  top: -100%;
+  width: 300%;
+}  
+
+@keyframes pulseRing {
+  0% { transform: scale(.5); }
+  80%, 100% { opacity: 0; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
