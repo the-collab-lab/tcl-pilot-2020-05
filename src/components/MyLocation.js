@@ -7,4 +7,3 @@ import '../App.css'
 export default () => <div className="MyLocation" />
   
 
-//export default MyLocation;

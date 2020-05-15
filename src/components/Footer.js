@@ -1,7 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 
+
+const Footer= () => {
+const [marker, allowmarker] = useState(null);
 
 const handleClick= () => {
+        
+       allowmarker(true);
         
         var options = {
         enableHighAccuracy: true,
@@ -23,18 +28,23 @@ const handleClick= () => {
       }
       
       navigator.geolocation.getCurrentPosition(success, error, options);
+
+      
    }
 
-         
-
-const Footer= () => {
-      
-
+            
     return (
         <footer className= "footer">
 
-          <button onClick={handleClick}>Share Location?</button>
-            
+        <h1>
+          { 
+        
+            marker ? <button disabled>Location Shared</button>
+                : <button onClick={handleClick}>Share Location?</button>
+          }
+             
+        </h1>
+
         <div>
         <p><strong> Click "Share Location"</strong> to discover interesting landmarks around you from Wikipedia</p>
         <p><strong>Tap on a marker</strong> on the map and more information about it will show up in this space. Have fun!</p>
