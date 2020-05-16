@@ -1,14 +1,15 @@
 import React from 'react';
 
-
-export default Pin = ({name, text, image}) => {
-    DEFAULT_IMAGE = "../../public/img/default-thumb.png"
+const Pin = ({title, description, image}) => {
+    const DEFAULT_IMAGE = "../../public/img/default-thumb.png"
     return (
         <div>
-            <h1>{name}</h1>
+            {title?<h1>{title}</h1>:<h1>Unkown</h1>}
             {image? (<img src={image} height="10" width="10"></img>):(<img src={DEFAULT_IMAGE} height="10" width="10"></img>)}
-            <p>Description: {text}</p>
+            {description? <p>Description: {description}</p>:<p>No Description</p>}
         </div>
 
     )
 }
+
+export default Pin;
