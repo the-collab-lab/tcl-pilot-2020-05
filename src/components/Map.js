@@ -1,5 +1,6 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import NearbyPins from './NearbyPins';
 
 function Map(){
     const defaultLocation = {
@@ -17,7 +18,7 @@ function Map(){
             defaultCenter={defaultLocation.center}
             defaultZoom={defaultLocation.zoom}
             >
-            
+            <NearbyPins lat={defaultLocation.center.lat} lng={defaultLocation.center.lng}/>
             </GoogleMapReact> 
         </div>
     )
