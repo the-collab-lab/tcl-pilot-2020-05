@@ -4,12 +4,13 @@ import Pins from './Pins';
 
 // Looks for all nearby places, generates a list, and maps child Pin components for each place
 
-export default NearbyPins = ({lat, long}) => {
+export default NearbyPins = ({lat, lng}) => {
     let output = []
+    console.log(fetchNearbyPlaces(lat,lng));
     return (
-        <div>
+        <React.Fragment>
             {output.map((place, index) => <Pin key={index} name={ } text={ } image={ } />)}
-        </div>
+        </ React.Fragment>
     )
 
 }
