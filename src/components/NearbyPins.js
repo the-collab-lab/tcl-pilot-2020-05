@@ -20,27 +20,21 @@ const fetchNearbyPlacesPromise = async (lat, lng) => {
 
 //executes the fetch, and formats data for consumption by Pin component
 async function fetchNearbyPlaces(lat, lng) {
-    let response = await fetchNearbyPlacesPromise(lat,lng)
-
-    let output = [];
-    if(response){
-        const nearbyPlaces = await response.pages;
-        output = await nearbyPlaces.map( (place) => {
-            const lat = place.coordinates[0].lat
-            const lon = place.coordinates[0].lon
+    let places = await fetchNearbyPlacesPromise(lat,lng).then(res => {console.log(res); return res.query.pages;});
+    if(places){
+        return places.map( (place) => {
+            const latitude = place.coordinates[0].lat
+            const longitude = place.coordinates[0].lon
             const description = place.description;
             const title = place.title;
-            const image = place.thumbnail.source;
-            const dict = {lat, lon, description, title, image};
-            console.log(dict);
+            const image = place.thumbnail? place.thumbnail.source: null;
+            const dict = {latitude, longitude, description, title, image};
             return dict;
         });
-        }
-    // } else {
-    // // might want to differentiate between error and no outputs in the future. Currently will render same thing.
-    //     output = [];
-    
-   return output;
+        } else {
+    // might want to differentiate between error and no outputs in the future. Currently will render same thing.
+        return [];
+    }
 }
 
 // Looks for all nearby places, generates a list, and maps child Pin components for each place
@@ -48,15 +42,17 @@ async function fetchNearbyPlaces(lat, lng) {
 const NearbyPins = ({lat, lng}) => {
     const [nearbyPlaces, setNearbyPlaces] = useState([]);
 
-    useEffect(() => {
-        let fetchNearby = fetchNearbyPlaces(lat, lng);
-        setNearbyPlaces(fetchNearby);
+    useEffect(()=> {
+        let fetchNearby = fetchNearbyPlaces(lat, lng).then(res => {console.log(res); setNearbyPlaces(res)});
     }, [])
 
     return (
         <React.Fragment>
-            {(nearbyPlaces.map(
-                    ({lat,lon,title,description,image}, index) => <Pin key={index} lat={lat} lon={lon} title={title} description={description} image={image} />))
+            {nearbyPlaces?
+                (nearbyPlaces.map(
+                    ({latitude,longitude,title,description,image}, index) => <Pin key={index} lat={latitude} lng={longitude} title={title} description={description} image={image} />))
+                :
+                null
             }
 
         </ React.Fragment>
