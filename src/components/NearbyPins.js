@@ -20,11 +20,11 @@ const fetchNearbyPlacesPromise = async (lat, lng) => {
 
 //executes the fetch, and formats data for consumption by Pin component
 async function fetchNearbyPlaces(lat, lng) {
-    let places = await fetchNearbyPlacesPromise(lat,lng).then(res => {console.log(res); return res.query.pages;});
+    let places = await fetchNearbyPlacesPromise(lat,lng).then(res => res.query.pages);
     if(places){
         return places.map( (place) => {
-            const latitude = place.coordinates[0].lat
-            const longitude = place.coordinates[0].lon
+            const latitude = parseFloat(place.coordinates[0].lat);
+            const longitude = parseFloat(place.coordinates[0].lon);
             const description = place.description;
             const title = place.title;
             const image = place.thumbnail? place.thumbnail.source: null;
@@ -43,7 +43,7 @@ const NearbyPins = ({lat, lng}) => {
     const [nearbyPlaces, setNearbyPlaces] = useState([]);
 
     useEffect(()=> {
-        let fetchNearby = fetchNearbyPlaces(lat, lng).then(res => {console.log(res); setNearbyPlaces(res)});
+        fetchNearbyPlaces(lat, lng).then(res => setNearbyPlaces(res));
     }, [])
 
     return (
