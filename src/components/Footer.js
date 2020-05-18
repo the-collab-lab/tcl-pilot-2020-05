@@ -1,42 +1,10 @@
-import React,{useState, useContext} from "react";
-import LocationContext from './LocationContext'
+import React from "react";
 
-const Footer= () => {
-const [marker, allowmarker] = useState(null);
-// const [lat, setLat, setLng,lng,zoom] = useContext(LocationContext)
-// const [lat, setLat]=useState(59.95)
-// const [lng, setLng]=useState(30.33)
-// const[zoom, setZoom]=useState(11)
 
-const handleClick= () => {
-  allowmarker(true);
-  var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
-      
-  function success(pos) {
-    var crd = pos.coords;
-    let longitude=crd.longitude;
-    let latitude = crd.latitude;
-    
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-    // setLng(longitude)
-    // setLat(latitude)
-    // setState(state=> ({...state, lat:latitude, lng:longitude }))
-    // setContextData(contextData=>({...contextData, lat:latitude, lng: longitude}))   
-  }
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
-    
-  navigator.geolocation.getCurrentPosition(success, error, options);
-}
-  
+const Footer = (props) => {
+const { handleClick, marker } = props
+
+
             
   return (
     

@@ -2,10 +2,11 @@ import React from "react";
 import Map from '../components/Map';
 
 
-const Main = () =>{
+const Main = (props) => {
+    const {data} = props
     return (
         <section className="main">
-            <Map />
+            <Map  data={data}/>
         </section>
     )
 }
