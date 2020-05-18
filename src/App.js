@@ -8,11 +8,13 @@ function App() {
   
   const [marker, allowmarker] = useState(null);
   const [data, setData]=useState({
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-  zoom: 11
+    
+      center: {
+        lat: 59.95,
+        lng: 30.33
+      },
+      zoom: 11
+    
   })
   const handleClick = () => {
     allowmarker(true);
@@ -38,7 +40,7 @@ function App() {
             lat: latitude,
             lng: longitude
           },
-        zoom: 11
+     
         })
         
     }
