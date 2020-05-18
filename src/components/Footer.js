@@ -9,10 +9,7 @@ const [marker, allowmarker] = useState(null);
 // const[zoom, setZoom]=useState(11)
 
 const handleClick= () => {
-        
   allowmarker(true);
-       
-        
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -31,17 +28,13 @@ const handleClick= () => {
     // setLng(longitude)
     // setLat(latitude)
     // setState(state=> ({...state, lat:latitude, lng:longitude }))
-    // setContextData(contextData=>({...contextData, lat:latitude, lng: longitude}))
-        
-    
-      
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-      
-    navigator.geolocation.getCurrentPosition(success, error, options);
-      
+    // setContextData(contextData=>({...contextData, lat:latitude, lng: longitude}))   
   }
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+    
+  navigator.geolocation.getCurrentPosition(success, error, options);
 }
   
             
