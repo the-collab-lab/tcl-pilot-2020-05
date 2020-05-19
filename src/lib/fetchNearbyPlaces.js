@@ -1,7 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import Pin from './Pins';
-
-
 //creates promise to fetch data
 const fetchNearbyPlacesPromise = async (lat, lng) => {
     let url = `https://segdeha.com/api/nearby.php?lat=${lat}&lng=${lng}`
@@ -37,27 +33,4 @@ async function fetchNearbyPlaces(lat, lng) {
     }
 }
 
-// Looks for all nearby places, generates a list, and maps child Pin components for each place
-
-const NearbyPins = ({lat, lng}) => {
-    const [nearbyPlaces, setNearbyPlaces] = useState([]);
-
-    useEffect(()=> {
-        fetchNearbyPlaces(lat, lng).then(res => setNearbyPlaces(res));
-    }, [])
-
-    return (
-        <React.Fragment>
-            {nearbyPlaces?
-                (nearbyPlaces.map(
-                    ({latitude,longitude,title,description,image}, index) => <Pin key={index} lat={latitude} lng={longitude} title={title} description={description} image={image} />))
-                :
-                null
-            }
-
-        </ React.Fragment>
-    )
-
-}
-
-export default NearbyPins;
+export default fetchNearbyPlaces;
