@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Footer = (props) => {
   const { handleClick, marker } = props;
@@ -37,6 +38,11 @@ const Footer = (props) => {
       </div>
     </footer>
   );
+};
+
+Footer.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  marker: PropTypes.bool.isRequired,
 };
 
 export default Footer;

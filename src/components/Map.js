@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 import MyLocation from "./MyLocation";
 
@@ -17,4 +18,9 @@ function Map(props) {
     </div>
   );
 }
+
+Map.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
 export default Map;

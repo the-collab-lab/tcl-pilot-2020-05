@@ -5,7 +5,7 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 function App() {
-  const [marker, allowMarker] = useState(null);
+  const [marker, allowMarker] = useState(false);
   const [data, setData] = useState({
     // default data - center currently set to Cork, Ireland
     center: {
