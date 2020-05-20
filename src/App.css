@@ -40,3 +40,10 @@
   width: 10vw;
   z-index: 1;
 }
+
+.pins img{
+  height: inherit;
+  width: inherit;
+  max-width: inherit;
+  max-height: inherit;
+}
