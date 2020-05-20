@@ -1,37 +1,35 @@
 import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 function App() {
-  const [marker, allowmarker] = useState(null);
+  const [marker, allowMarker] = useState(null);
   const [data, setData] = useState({
+    // default data - center currently set to Cork, Ireland
     center: {
-      lat: 59.95,
-      lng: 30.33,
+      lat: 51.8985,
+      lng: -8.4756,
     },
     zoom: 11,
   });
+
   const handleClick = () => {
-    allowmarker(true);
-    var options = {
+    allowMarker(true);
+    const options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0,
     };
 
     function success(pos) {
-      var crd = pos.coords;
-      let longitude = crd.longitude;
+      const crd = pos.coords;
       let latitude = crd.latitude;
-
-      console.log("Your current position is:");
-      console.log(`Latitude : ${crd.latitude}`);
-      console.log(`Longitude: ${crd.longitude}`);
-      console.log(`More or less ${crd.accuracy} meters.`);
+      let longitude = crd.longitude;
 
       setData({
+        ...data,
         center: {
           lat: latitude,
           lng: longitude,
@@ -46,7 +44,6 @@ function App() {
     navigator.geolocation.getCurrentPosition(success, error, options);
   };
 
-  console.log("data", data);
   return (
     <div className="App">
       <Header />
