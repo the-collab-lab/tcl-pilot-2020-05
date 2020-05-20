@@ -27,11 +27,8 @@ function Map(){
             defaultCenter={defaultLocation.center}
             defaultZoom={defaultLocation.zoom}
             >
-            {nearbyPlaces?
-                (nearbyPlaces.map(
+            {nearbyPlaces && (nearbyPlaces.map(
                     ({latitude,longitude,title,description,image}, index) => <Pin key={index} lat={latitude} lng={longitude} title={title} description={description} image={image} />))
-                :
-                null
             }
             </GoogleMapReact> 
         </div>
