@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -7,6 +7,10 @@ import Footer from "./components/Footer";
 
 function App() {
 
+  /*const [currentPin,setCurrentPin] = useState(false);
+  const [displayInformation, setdisplayInformation] = useState(false);*/
+
+  
 
   return (
     <div className="App">

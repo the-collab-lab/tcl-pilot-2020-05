@@ -1,7 +1,5 @@
 import React from "react";
-import PinDescription from "PinDescription";
-
-
+import PinDescription from "./PinDescription";
 
 
 const Footer= ({title, description, image, displayDescription}) => {
@@ -10,8 +8,7 @@ const Footer= ({title, description, image, displayDescription}) => {
     const descriptionFooter = <PinDescription title = {title} description ={description} image = {image}/>
   
 
-
-    const defaultFooter = ( 
+    const defaultFooter = (
     
     <footer className= "footer">
             
@@ -23,11 +20,14 @@ const Footer= ({title, description, image, displayDescription}) => {
    
 
     </footer>
+   
     
     )
+    
 
     return (
-        { displayDescription? descriptionFooter : defaultFooter }
+      
+        <p>{ displayDescription? descriptionFooter : defaultFooter }</p>
        
 
     )
