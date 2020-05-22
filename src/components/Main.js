@@ -1,9 +1,9 @@
 import React from "react";
-import Map from "./Map";
 
-const Main = () => (
+
+const Main = ({map}) => (
   <section className="main">
-    <Map />
+    {map}
   </section>
 );
 

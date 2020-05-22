@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import Map from "./components/Map";
 
 
 function App() {
@@ -10,13 +11,13 @@ function App() {
   const [currentPin,setCurrentPin] = useState(null);
   const [displayInformation, setdisplayInformation] = useState(false);
   
-
+  const map = <Map nearbyPlaces={nearbyPlaces} setNearbyPlaces={setNearbyPlaces} />
   
 
   return (
     <div className="App">
       <Header />
-      <Main />
+      <Main map={map} />
       <Footer currentPin={currentPin} displayInformation={displayInformation} />
     </div>
   );
