@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Map from "./components/Map";
-import Pin from "./components/Pins"
+
 
 function App() {
   const [nearbyPlaces, setNearbyPlaces] = useState([]);

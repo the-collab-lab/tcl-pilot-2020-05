@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import GoogleMapReact from 'google-map-react';
 import Pin from './Pins';
 import fetchNearbyPlaces from '../lib/fetchNearbyPlaces';
@@ -27,11 +27,12 @@ const Map = ({nearbyPlaces, setNearbyPlaces, setCurrentPin, setDisplayInformatio
             options={{clickableIcons: false}}
             >
             {nearbyPlaces && (nearbyPlaces.map(
-                    (place, index) => <Pin key={place.index} lat={place.latitude} lng={place.longitude} image={place.image} place={place} setCurrentPin={setCurrentPin} setDisplayInformation={setDisplayInformation}/>))
-            }
+                    (place) => <Pin {...place} place={place} lat={place.latitude} lng ={place.longitude} 
+                    img ={place.image} setCurrentPin ={setCurrentPin} setDisplayInformation={setDisplayInformation}/>))
+}
             </GoogleMapReact> 
         </div>
     )
-    
-}
+            }
+
 export default Map;
