@@ -21,10 +21,10 @@ const Map = ({nearbyPlaces, setNearbyPlaces, setCurrentPin, setDisplayInformatio
     return (
         <div style={{ height: 'calc(66.67vh - 1.25rem)', width: '100%' }}>
           <GoogleMapReact
-            distanceToMouse={() => null }
             bootstrapURLKeys={{ key:'AIzaSyA_jF-TPUl8qTMZ3BKFTrFOolH9wR7NOz4'}}
             defaultCenter={defaultLocation.center}
             defaultZoom={defaultLocation.zoom}
+            options={{clickableIcons: false}}
             >
             {nearbyPlaces && (nearbyPlaces.map(
                     (place, index) => <Pin key={place.index} lat={place.latitude} lng={place.longitude} image={place.image} place={place} setCurrentPin={setCurrentPin} setDisplayInformation={setDisplayInformation}/>))
