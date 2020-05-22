@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import Pin from './Pins';
 import fetchNearbyPlaces from '../lib/fetchNearbyPlaces';
 
-const Map = ({nearbyPlaces, setNearbyPlaces}) => {
+const Map = ({nearbyPlaces, setNearbyPlaces, setCurrentPin, setDisplayInformation}) => {
 
     const defaultLocation = {
         center:{
@@ -27,7 +27,7 @@ const Map = ({nearbyPlaces, setNearbyPlaces}) => {
             defaultZoom={defaultLocation.zoom}
             >
             {nearbyPlaces && (nearbyPlaces.map(
-                    ({latitude,longitude,title,description,image}, index) => <Pin key={index} lat={latitude} lng={longitude} title={title} description={description} image={image} />))
+                    (place, index) => <Pin key={place.index} lat={place.latitude} lng={place.longitude} image={place.image} place={place} setCurrentPin={setCurrentPin} setDisplayInformation={setDisplayInformation}/>))
             }
             </GoogleMapReact> 
         </div>
