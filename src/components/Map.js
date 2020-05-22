@@ -3,8 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import Pin from './Pins';
 import fetchNearbyPlaces from '../lib/fetchNearbyPlaces';
 
-function Map(){
-    const [nearbyPlaces, setNearbyPlaces] = useState([]);
+const Map = ({nearbyPlaces, setNearbyPlaces}) => {
 
     const defaultLocation = {
         center:{

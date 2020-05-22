@@ -6,9 +6,10 @@ import Footer from "./components/Footer";
 
 
 function App() {
-
-  /*const [currentPin,setCurrentPin] = useState(false);
-  const [displayInformation, setdisplayInformation] = useState(false);*/
+  const [nearbyPlaces, setNearbyPlaces] = useState([]);
+  const [currentPin,setCurrentPin] = useState(null);
+  const [displayInformation, setdisplayInformation] = useState(false);
+  
 
   
 
@@ -16,7 +17,7 @@ function App() {
     <div className="App">
       <Header />
       <Main />
-      <Footer />
+      <Footer currentPin={currentPin} displayInformation={displayInformation} />
     </div>
   );
 }
