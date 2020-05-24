@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 import Map from "../components/Map";
 
 const Main = (props) => {
-  const { data } = props;
+  const { mapProperties } = props;
 
   return (
     <section className="main">
-      <Map data={data} />
+      <Map mapProperties={mapProperties} />
     </section>
   );
 };
 
 Main.propTypes = {
-  data: PropTypes.object.isRequired,
+  mapProperties: PropTypes.object.isRequired,
 };
 
 export default Main;

@@ -6,8 +6,8 @@ import Footer from "./components/Footer";
 
 function App() {
   const [marker, allowMarker] = useState(false);
-  const [data, setData] = useState({
-    // default data - center currently set to Cork, Ireland
+  const [mapProperties, setMapProperties] = useState({
+    // default map properties - center currently set to Cork, Ireland
     center: {
       lat: 51.8985,
       lng: -8.4756,
@@ -28,8 +28,8 @@ function App() {
       let latitude = crd.latitude;
       let longitude = crd.longitude;
 
-      setData({
-        ...data,
+      setMapProperties({
+        ...mapProperties,
         center: {
           lat: latitude,
           lng: longitude,
@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Main data={data} />
+      <Main mapProperties={mapProperties} />
       <Footer handleClick={handleClick} marker={marker} />
     </div>
   );
