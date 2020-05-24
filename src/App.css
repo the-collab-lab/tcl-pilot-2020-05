@@ -26,10 +26,10 @@
   margin: 0.75rem 0;
 }
 
-.pins{
-  background:white;
+.pins {
+  background: white;
   border-radius: 5px;
-  border:solid 3px white;
+  border: solid 3px white;
   box-shadow: rgba(0, 0, 0, 0.5) 0 2px 8px;
   height: 50px;
   max-height: 60px;
@@ -41,9 +41,51 @@
   z-index: 1;
 }
 
-.pins img{
+.pins img {
   height: inherit;
   width: inherit;
   max-width: inherit;
   max-height: inherit;
+}
+
+.MyLocation {
+  animation: pulseDot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite;
+  background-color: var(--pulsating-dot, rgb(25, 0, 255));
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 10px;
+  width: 10px;
+}
+
+.MyLocation:before {
+  animation: pulseRing 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  background-color: var(--pulsating-dot, rgb(255, 0, 255));
+  border-radius: 40px;
+  content: "";
+  display: block;
+  height: 300%;
+  left: -100%;
+  position: relative;
+  top: -100%;
+  width: 300%;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.5);
+  }
+  80%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
