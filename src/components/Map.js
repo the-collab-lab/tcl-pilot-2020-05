@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 import MyLocation from "./MyLocation";
 
-function Map(props) {
-  const { mapProperties } = props;
-
+function Map({ mapProperties }) {
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact

@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Map from "../components/Map";
 
-const Main = (props) => {
-  const { mapProperties } = props;
-
+const Main = ({ mapProperties }) => {
   return (
     <section className="main">
       <Map mapProperties={mapProperties} />

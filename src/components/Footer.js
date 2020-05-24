@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Footer = (props) => {
-  const { handleClick, marker } = props;
-
+const Footer = ({ handleClick, marker }) => {
   return (
     <footer className="footer">
       <h1>
