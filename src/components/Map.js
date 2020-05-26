@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+/*import PropTypes from "prop-types";*/
 import GoogleMapReact from "google-map-react";
 import MyLocation from "./MyLocation";
-import Pin from "./Pins";
 import fetchNearbyPlaces from "../lib/fetchNearbyPlaces";
+
+
 
 function Map({ mapProperties }) {
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
-
+  const Map = ({nearbyPlaces, setNearbyPlaces, setCurrentPin, setDisplayInformation}) => {
+    
   useEffect(() => {
     fetchNearbyPlaces(
       mapProperties.center.lat,
@@ -21,31 +23,31 @@ function Map({ mapProperties }) {
         bootstrapURLKeys={{ key: "AIzaSyA_jF-TPUl8qTMZ3BKFTrFOolH9wR7NOz4" }}
         center={mapProperties.center}
         zoom={mapProperties.zoom}
+        options={{clickableIcons: false}}
       >
-        {nearbyPlaces &&
-          nearbyPlaces.map(
-            ({ latitude, longitude, title, description, image }, index) => (
-              <Pin
-                key={index}
-                lat={latitude}
-                lng={longitude}
-                title={title}
-                description={description}
-                image={image}
-              />
-            )
-          )}
-        <MyLocation
+        {nearbyPlaces && (nearbyPlaces.map(
+               /* ({latitude,longitude,title,description,image}, index) => <Pin key={index} lat={latitude} lng={longitude} 
+                title={title} description={description} image={image} />))
+        }*/
+                (place) => <Pin {...place} place={place} lat={place.latitude} lng ={place.longitude} 
+                img ={place.image} setCurrentPin ={setCurrentPin} setDisplayInformation={setDisplayInformation}/>
+        )
+        )             
+      }
+      <MyLocation
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
-      </GoogleMapReact>
-    </div>
-  );
-}
-
+        
+      
+      
+        </GoogleMapReact> 
+      </div> 
+   )}
+}             
+/*
 Map.propTypes = {
-  mapProperties: PropTypes.object.isRequired,
-};
-
+    mapProperties: PropTypes.object.isRequired,
+  };*/
+  
 export default Map;

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React,{useState} from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import Map from "./components/Map";
+
 
 function App() {
   const [marker, allowMarker] = useState(false);
+  const [nearbyPlaces, setNearbyPlaces] = useState([]);
+  const [currentPin,setCurrentPin] = useState({title:null, description:null, image:null});
+  const [displayInformation, setDisplayInformation] = useState(false);
+  const map = <Map nearbyPlaces={nearbyPlaces} setNearbyPlaces={setNearbyPlaces} setCurrentPin={setCurrentPin} setDisplayInformation={setDisplayInformation} />
   const [mapProperties, setMapProperties] = useState({
     // default map properties - center currently set to Cork, Ireland
     center: {
@@ -14,6 +20,7 @@ function App() {
     },
     zoom: 11,
   });
+ 
 
   const handleClick = () => {
     allowMarker(true);
@@ -44,11 +51,14 @@ function App() {
     navigator.geolocation.getCurrentPosition(success, error, options);
   };
 
+
   return (
     <div className="App">
       <Header />
       <Main mapProperties={mapProperties} />
       <Footer handleClick={handleClick} marker={marker} />
+      <Main map={map} />
+      <Footer currentPin={currentPin} displayInformation={displayInformation} />
     </div>
   );
 }
