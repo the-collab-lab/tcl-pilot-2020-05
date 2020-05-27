@@ -43,7 +43,9 @@ const Footer= ({currentPin, displayInformation, handleClick, marker}) => {
 
     return (
       
-        <footer className= "footer">{ displayInformation? descriptionFooter : defaultFooter }</footer>
+       <footer className= "footer">{ displayInformation? descriptionFooter : defaultFooter }</footer>
+
+   
        
 
     )

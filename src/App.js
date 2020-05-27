@@ -10,7 +10,7 @@ function App() {
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
   const [currentPin,setCurrentPin] = useState({title:null, description:null, image:null});
   const [displayInformation, setDisplayInformation] = useState(false);
-  const [ setUserHasPanned] = useState(true);
+  const [userHasPanned, setUserHasPanned] = useState(true);
   const map = <Map nearbyPlaces={nearbyPlaces} setNearbyPlaces={setNearbyPlaces} setCurrentPin={setCurrentPin} setDisplayInformation={setDisplayInformation} />
   const [mapProperties, setMapProperties] = useState({
     // default map properties - center currently set to Cork, Ireland
@@ -25,6 +25,9 @@ function App() {
     evt.preventDefault();
     setUserHasPanned(false);
   };
+
+  const centerOnMe = userHasPanned?
+  'center-on-me live' : 'center-on-me';
 
   const handleClick = () => {
     allowMarker(true);
@@ -53,7 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header onClick={handleCenterClick}>
+      <Header className = {centerOnMe} to = "/" onClick={handleCenterClick}>
         <img src="/img/center-on-me.png" alt= "center on me"/>
        </Header>
       <Main mapProperties={mapProperties} />
