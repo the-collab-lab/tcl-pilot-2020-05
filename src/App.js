@@ -59,10 +59,9 @@ function App() {
       <Header className = {centerOnMe} to = "/" onClick={handleCenterClick}>
         <img src="/img/center-on-me.png" alt= "center on me"/>
        </Header>
-      <Main mapProperties={mapProperties} />
-      <Footer handleClick={handleClick} marker={marker} />
-      <Main map={map} />
-      <Footer currentPin={currentPin} displayInformation={displayInformation} />
+      <Main map={map} mapProperties={mapProperties} setUserHasPanned={ setUserHasPanned }
+             userHasPanned={ userHasPanned }/>
+      <Footer currentPin={currentPin} displayInformation={displayInformation} handleClick={handleClick} marker={marker} />
     </div>
   );
 }
