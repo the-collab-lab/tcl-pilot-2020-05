@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Header = ({ userHasPanned, handleCenterClick }) => {
   const greyImg = userHasPanned ? null : "grey-img";
@@ -15,6 +16,11 @@ const Header = ({ userHasPanned, handleCenterClick }) => {
       What's near me?
     </header>
   );
+};
+
+Header.propTypes = {
+  userHasPanned: PropTypes.bool.isRequired,
+  handleCenterClick: PropTypes.func.isRequired,
 };
 
 export default Header;

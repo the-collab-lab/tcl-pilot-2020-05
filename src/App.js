@@ -8,22 +8,13 @@ import Map from "./components/Map";
 function App() {
   const [marker, allowMarker] = useState(false);
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
+  const [displayInformation, setDisplayInformation] = useState(false);
+  const [userHasPanned, setUserHasPanned] = useState(false);
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
     image: null,
   });
-  const [displayInformation, setDisplayInformation] = useState(false);
-  const [userHasPanned, setUserHasPanned] = useState(false);
-
-  const map = (
-    <Map
-      nearbyPlaces={nearbyPlaces}
-      setNearbyPlaces={setNearbyPlaces}
-      setCurrentPin={setCurrentPin}
-      setDisplayInformation={setDisplayInformation}
-    />
-  );
 
   const [mapProperties, setMapProperties] = useState({
     // default map properties - center currently set to Cork, Ireland
@@ -34,8 +25,18 @@ function App() {
     zoom: 11,
   });
 
-  const handleCenterClick = (evt) => {
-    evt.preventDefault();
+  const map = (
+    <Map
+      nearbyPlaces={nearbyPlaces}
+      setNearbyPlaces={setNearbyPlaces}
+      setCurrentPin={setCurrentPin}
+      setDisplayInformation={setDisplayInformation}
+      mapProperties={mapProperties}
+    />
+  );
+
+  const handleCenterClick = (e) => {
+    e.preventDefault();
     setUserHasPanned(true);
   };
 
@@ -70,16 +71,7 @@ function App() {
         userHasPanned={userHasPanned}
         handleCenterClick={handleCenterClick}
       />
-      <Main
-        nearbyPlaces={nearbyPlaces}
-        setNearbyPlaces={setNearbyPlaces}
-        setCurrentPin={setCurrentPin}
-        setDisplayInformation={setDisplayInformation}
-        mapProperties={mapProperties}
-        map={map}
-        userHasPanned={userHasPanned}
-        setUserHasPanned={setUserHasPanned}
-      />
+      <Main map={map} />
       <Footer
         currentPin={currentPin}
         displayInformation={displayInformation}
