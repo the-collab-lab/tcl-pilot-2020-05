@@ -48,10 +48,6 @@
   margin: 0.75rem 0;
 }
 
-.footer button {
-  cursor: pointer;
-}
-
 .pins {
   background: white;
   border-radius: 5px;
@@ -65,7 +61,6 @@
   user-select: none;
   width: 10vw;
   z-index: 1;
-  cursor: pointer;
 }
 
 .pins img {
