@@ -14,7 +14,7 @@ function App() {
     image: null,
   });
   const [displayInformation, setDisplayInformation] = useState(false);
-  const [userHasPanned, setUserHasPanned] = useState(true);
+  const [userHasPanned, setUserHasPanned] = useState(false);
 
   const map = (
     <Map
@@ -36,10 +36,8 @@ function App() {
 
   const handleCenterClick = (evt) => {
     evt.preventDefault();
-    setUserHasPanned(false);
+    setUserHasPanned(true);
   };
-
-  const centerOnMe = userHasPanned ? "center-on-me live" : "center-on-me";
 
   const handleClick = () => {
     allowMarker(true);
@@ -68,11 +66,10 @@ function App() {
 
   return (
     <div className="App">
-            
-      <Header className={centerOnMe} to="/" onClick={handleCenterClick}>
-        <img src="/img/center-on-me.png" alt="center on me" />
-      </Header>
-            
+      <Header
+        userHasPanned={userHasPanned}
+        handleCenterClick={handleCenterClick}
+      />
       <Main
         nearbyPlaces={nearbyPlaces}
         setNearbyPlaces={setNearbyPlaces}
@@ -83,14 +80,12 @@ function App() {
         userHasPanned={userHasPanned}
         setUserHasPanned={setUserHasPanned}
       />
-            
       <Footer
         currentPin={currentPin}
         displayInformation={displayInformation}
         handleClick={handleClick}
         marker={marker}
       />
-          
     </div>
   );
 }

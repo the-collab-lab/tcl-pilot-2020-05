@@ -10,6 +10,28 @@
   letter-spacing: 1px;
 }
 
+.header-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 20px;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+}
+
+.grey-img {
+  filter: grayscale(1);
+  opacity: 0.65;
+}
+
 .main {
   min-height: calc(66.67vh - 1.25rem);
 }
