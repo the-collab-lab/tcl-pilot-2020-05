@@ -44,6 +44,8 @@ const Footer = ({ currentPin, displayInformation, handleClick, marker }) => {
 };
 
 Footer.propTypes = {
+  currentPin: PropTypes.object.isRequired,
+  displayInformation: PropTypes.bool.isRequired,
   handleClick: PropTypes.func.isRequired,
   marker: PropTypes.bool.isRequired,
 };

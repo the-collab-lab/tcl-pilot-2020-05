@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 import Pin from "./Pins";
 import MyLocation from "./MyLocation";
@@ -53,6 +54,14 @@ const Map = ({
       <MapCenter />
     </div>
   );
+};
+
+Map.propTypes = {
+  nearbyPlaces: PropTypes.array.isRequired,
+  setNearbyPlaces: PropTypes.func.isRequired,
+  setCurrentPin: PropTypes.func.isRequired,
+  setDisplayInformation: PropTypes.func.isRequired,
+  mapProperties: PropTypes.object.isRequired,
 };
 
 export default Map;
