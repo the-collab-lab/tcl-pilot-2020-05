@@ -3,6 +3,7 @@ import GoogleMapReact from "google-map-react";
 import Pin from "./Pins";
 import MyLocation from "./MyLocation";
 import fetchNearbyPlaces from "../lib/fetchNearbyPlaces";
+import MapCenter from "./MapCenter";
 
 const Map = ({
   nearbyPlaces,
@@ -13,6 +14,7 @@ const Map = ({
   map,
   userHasPanned,
   setUserHasPanned,
+  MapCenter,
 }) => {
   useEffect(() => {
     fetchNearbyPlaces(
@@ -48,6 +50,7 @@ const Map = ({
           lng={mapProperties.center.lng}
         />
       </GoogleMapReact>
+      <MapCenter />
     </div>
   );
 };
