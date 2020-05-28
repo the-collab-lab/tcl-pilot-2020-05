@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import Pin from "./Pins";
+import MyLocation from "./MyLocation";
 import fetchNearbyPlaces from "../lib/fetchNearbyPlaces";
 
 const Map = ({
@@ -41,6 +42,11 @@ const Map = ({
               setDisplayInformation={setDisplayInformation}
             />
           ))}
+
+        <MyLocation
+          lat={mapProperties.center.lat}
+          lng={mapProperties.center.lng}
+        />
       </GoogleMapReact>
     </div>
   );
