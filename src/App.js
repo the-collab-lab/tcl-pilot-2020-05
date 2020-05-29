@@ -11,7 +11,7 @@ function App() {
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
   const [newPin, setNewPin] = useState([]);
-  const centerOnMe = marker && userHasPanned ? 'center-on-me live' : 'center-on-me';
+  //const [headerbtn] = marker && userHasPanned ? 'center-on-me live' : 'center-on-me';
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -25,7 +25,10 @@ function App() {
       lng: -8.4756,
     },
     zoom: 11,
+    panning: false
   });
+  //this.setNearbyPlaces();
+
 
   const map = (
     <Map
@@ -35,15 +38,19 @@ function App() {
       setDisplayInformation={setDisplayInformation}
       mapProperties={mapProperties}
       setNewPin={setNewPin}
+      setUserHasPanned={setUserHasPanned}
+      userHasPanned={userHasPanned}
+
     />
   );
 
   const handleCenterClick = (e) => {
     e.preventDefault();
-    setUserHasPanned(true);
+    setUserHasPanned(false);
   };
 
   const handleClick = () => {
+    const { userHasPanned } = this.props;
     allowMarker(true);
     const options = {
       enableHighAccuracy: true,

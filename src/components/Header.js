@@ -6,7 +6,7 @@ const Header = ({ userHasPanned, handleCenterClick }) => {
 
   return (
     <header className="header">
-      <button className="header-btn" onClick={handleCenterClick} to="/">
+      <button className= "header-btn" onClick = { handleCenterClick } to="/">
         <img
           src="/img/center-on-me.png"
           alt="center on me"
