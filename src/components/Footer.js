@@ -38,6 +38,7 @@ const Footer = ({ currentPin, displayInformation, handleClick, marker }) => {
           <button onClick={handleClick}> Share Location? </button>
         )}
       </h1>
+
       {displayInformation ? descriptionFooter : defaultFooter}
     </footer>
   );
