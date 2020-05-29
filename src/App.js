@@ -10,6 +10,7 @@ function App() {
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
+  const [newPin, setNewPin] = useState([]);
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -32,6 +33,7 @@ function App() {
       setCurrentPin={setCurrentPin}
       setDisplayInformation={setDisplayInformation}
       mapProperties={mapProperties}
+      setNewPin={setNewPin}
     />
   );
 
@@ -77,6 +79,7 @@ function App() {
         displayInformation={displayInformation}
         handleClick={handleClick}
         marker={marker}
+        newPin={newPin}
       />
     </div>
   );
