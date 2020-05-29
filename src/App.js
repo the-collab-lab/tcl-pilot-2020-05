@@ -11,6 +11,7 @@ function App() {
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
   const [newPin, setNewPin] = useState([]);
+  const centerOnMe = marker && userHasPanned ? 'center-on-me live' : 'center-on-me';
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
