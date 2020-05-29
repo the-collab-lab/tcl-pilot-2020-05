@@ -4,7 +4,7 @@ import GoogleMapReact from "google-map-react";
 import Pin from "./Pins";
 import MyLocation from "./MyLocation";
 import fetchNearbyPlaces from "../lib/fetchNearbyPlaces";
-// import MapCenter from "./MapCenter";
+import MapCenter from "./MapCenter";
 
 const Map = ({
   nearbyPlaces,
@@ -46,6 +46,7 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
+        <MapCenter />
       </GoogleMapReact>
     </div>
   );
