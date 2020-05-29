@@ -1,21 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Map from "../components/Map";
 
-const Main = ({ mapProperties, map }) => {
-  return (
-    <section className="main">
-      <Map mapProperties={mapProperties} />
-      {map}
-    </section>
-  );
+const Main = ({ map }) => {
+  return <section className="main">{map}</section>;
 };
 
 Main.propTypes = {
-  mapProperties: PropTypes.object.isRequired,
+  map: PropTypes.node.isRequired,
 };
-
-
-  
 
 export default Main;
