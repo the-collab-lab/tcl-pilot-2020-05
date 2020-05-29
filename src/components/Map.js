@@ -5,6 +5,7 @@ import Pin from "./Pins";
 import MyLocation from "./MyLocation";
 import fetchNearbyPlaces from "../lib/fetchNearbyPlaces";
 import MapCenter from "./MapCenter";
+ 
 
 const Map = ({
   nearbyPlaces,
@@ -12,6 +13,7 @@ const Map = ({
   setCurrentPin,
   setDisplayInformation,
   mapProperties,
+  setNewPin,
 }) => {
   useEffect(() => {
     fetchNearbyPlaces(
@@ -38,6 +40,7 @@ const Map = ({
               lng={place.longitude}
               img={place.image}
               setCurrentPin={setCurrentPin}
+              setNewPin={setNewPin}
               setDisplayInformation={setDisplayInformation}
             />
           ))}
