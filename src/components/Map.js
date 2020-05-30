@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 import Pin from "./Pins";
@@ -13,12 +13,16 @@ const Map = ({
   mapProperties,
 }) => {
   useEffect(() => {
-    fetchNearbyPlaces(
-      mapProperties.center.lat,
-      mapProperties.center.lng
-    ).then((res) => setNearbyPlaces(res));
+    if (!pendingPromise) {
+      fetchNearbyPlaces(
+        mapProperties.center.lat,
+        mapProperties.center.lng,
+        setPendingPromise
+      ).then((res) => setNearbyPlaces(res), setPendingPromise(false));
+    }
   }, [mapProperties.center.lat, mapProperties.center.lng, setNearbyPlaces]);
 
+  let [pendingPromise, setPendingPromise] = useState(false);
   return (
     <div style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}>
       <GoogleMapReact
