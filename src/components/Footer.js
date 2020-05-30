@@ -2,7 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import PinDescription from "./PinDescription";
 
-const Footer = ({ currentPin, displayInformation, handleClick, marker }) => {
+const Footer = ({
+  currentPin,
+  displayInformation,
+  handleLocationSharedClick,
+  marker,
+}) => {
   const descriptionFooter = (
     <PinDescription
       title={currentPin.title}
@@ -35,7 +40,7 @@ const Footer = ({ currentPin, displayInformation, handleClick, marker }) => {
         {marker ? (
           <button disabled> Location Shared </button>
         ) : (
-          <button onClick={handleClick}> Share Location? </button>
+          <button onClick={handleLocationSharedClick}> Share Location? </button>
         )}
       </h1>
 
@@ -47,7 +52,7 @@ const Footer = ({ currentPin, displayInformation, handleClick, marker }) => {
 Footer.propTypes = {
   currentPin: PropTypes.object.isRequired,
   displayInformation: PropTypes.bool.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleLocationSharedClick: PropTypes.func.isRequired,
   marker: PropTypes.bool.isRequired,
 };
 
