@@ -10,8 +10,6 @@ function App() {
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
-  const [newPin, setNewPin] = useState([]);
-  //const [headerbtn] = marker && userHasPanned ? 'center-on-me live' : 'center-on-me';
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -25,10 +23,41 @@ function App() {
       lng: -8.4756,
     },
     zoom: 11,
-    panning: false
+    panning: false,
   });
-  //this.setNearbyPlaces();
 
+  function getCoordinates(pos) {
+    const crd = pos.coords;
+    let latitude = crd.latitude;
+    let longitude = crd.longitude;
+    setMapProperties({
+      ...mapProperties,
+      center: {
+        lat: latitude,
+        lng: longitude,
+      },
+    });
+  }
+
+  function logError(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  const handleCenterClick = (e) => {
+    e.preventDefault();
+    setUserHasPanned(false);
+  };
+
+  const handleLocationSharedClick = () => {
+    allowMarker(true);
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
+    navigator.geolocation.getCurrentPosition(getCoordinates, logError, options);
+  };
 
   const map = (
     <Map
@@ -37,43 +66,10 @@ function App() {
       setCurrentPin={setCurrentPin}
       setDisplayInformation={setDisplayInformation}
       mapProperties={mapProperties}
-      setNewPin={setNewPin}
-      setUserHasPanned={setUserHasPanned}
       userHasPanned={userHasPanned}
-
+      setUserHasPanned={setUserHasPanned}
     />
   );
-
-  const handleCenterClick = (e) => {
-    e.preventDefault();
-    setUserHasPanned(false);
-  };
-
-  const handleClick = () => {
-    const { userHasPanned } = this.props;
-    allowMarker(true);
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0,
-    };
-    function success(pos) {
-      const crd = pos.coords;
-      let latitude = crd.latitude;
-      let longitude = crd.longitude;
-      setMapProperties({
-        ...mapProperties,
-        center: {
-          lat: latitude,
-          lng: longitude,
-        },
-      });
-    }
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-    navigator.geolocation.getCurrentPosition(success, error, options);
-  };
 
   return (
     <div className="App">
@@ -85,11 +81,11 @@ function App() {
       <Footer
         currentPin={currentPin}
         displayInformation={displayInformation}
-        handleClick={handleClick}
+        handleLocationSharedClick={handleLocationSharedClick}
         marker={marker}
-        newPin={newPin}
       />
     </div>
   );
 }
+
 export default App;
