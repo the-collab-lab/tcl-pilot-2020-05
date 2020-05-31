@@ -10,6 +10,7 @@ function App() {
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
+  const [mapsObj, setMapsObj] = useState({});
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -37,6 +38,7 @@ function App() {
         lng: longitude,
       },
     });
+    setUserHasPanned(false); // ensures MapCenter dot not displayed when map first moves to user location
   }
 
   function logError(err) {
@@ -44,7 +46,9 @@ function App() {
   }
 
   const handleCenterClick = (e) => {
+    const { map } = mapsObj;
     e.preventDefault();
+    map.setCenter(mapProperties.center);
     setUserHasPanned(false);
   };
 
@@ -68,6 +72,8 @@ function App() {
       mapProperties={mapProperties}
       userHasPanned={userHasPanned}
       setUserHasPanned={setUserHasPanned}
+      mapsObj={mapsObj}
+      setMapsObj={setMapsObj}
     />
   );
 

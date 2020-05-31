@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
+import fetchNearbyPlaces from "../lib/fetchNearbyPlaces";
+import isObjEmpty from "../lib/isObjEmpty";
 import Pin from "./Pins";
 import MyLocation from "./MyLocation";
-import fetchNearbyPlaces from "../lib/fetchNearbyPlaces";
 import MapCenter from "./MapCenter";
- 
 
 const Map = ({
   nearbyPlaces,
@@ -13,7 +13,10 @@ const Map = ({
   setCurrentPin,
   setDisplayInformation,
   mapProperties,
-  setNewPin,
+  userHasPanned,
+  setUserHasPanned,
+  mapsObj,
+  setMapsObj,
 }) => {
   useEffect(() => {
     fetchNearbyPlaces(
@@ -22,6 +25,18 @@ const Map = ({
     ).then((res) => setNearbyPlaces(res));
   }, [mapProperties.center.lat, mapProperties.center.lng, setNearbyPlaces]);
 
+  function handleApiLoaded(map, maps) {
+    setMapsObj(map, maps);
+  }
+
+  // only runs if maps object is populated
+  if (!isObjEmpty(mapsObj)) {
+    const { map } = mapsObj;
+    map.addListener("center_changed", function () {
+      setUserHasPanned(true);
+    });
+  }
+
   return (
     <div style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}>
       <GoogleMapReact
@@ -29,6 +44,8 @@ const Map = ({
         center={mapProperties.center}
         zoom={mapProperties.zoom}
         options={{ clickableIcons: false }}
+        yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={(map, maps) => handleApiLoaded(map, maps)}
       >
         {nearbyPlaces &&
           nearbyPlaces.map((place, index) => (
@@ -40,7 +57,6 @@ const Map = ({
               lng={place.longitude}
               img={place.image}
               setCurrentPin={setCurrentPin}
-              setNewPin={setNewPin}
               setDisplayInformation={setDisplayInformation}
             />
           ))}
@@ -49,7 +65,7 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
-        <MapCenter />
+        <MapCenter userHasPanned={userHasPanned} />
       </GoogleMapReact>
     </div>
   );
@@ -61,6 +77,10 @@ Map.propTypes = {
   setCurrentPin: PropTypes.func.isRequired,
   setDisplayInformation: PropTypes.func.isRequired,
   mapProperties: PropTypes.object.isRequired,
+  userHasPanned: PropTypes.bool.isRequired,
+  setUserHasPanned: PropTypes.func.isRequired,
+  mapsObj: PropTypes.object.isRequired,
+  setMapsObj: PropTypes.func.isRequired,
 };
 
 export default Map;
