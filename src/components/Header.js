@@ -7,9 +7,11 @@ const Header = ({ displayModal, openModal, closeModal }) => {
     <Fragment>
       {displayModal && <SettingsModal closeModal={closeModal} />}
 
-      {/* onClick will later be moved to the forthcoming "settings" icon */}
-      <header onClick={openModal} className="header">
+      <header className="header">
         What's near me?
+        <button className="header-settings-btn" onClick={openModal}>
+          <img src="/img/settings.png" alt="gear icon" />
+        </button>
       </header>
     </Fragment>
   );

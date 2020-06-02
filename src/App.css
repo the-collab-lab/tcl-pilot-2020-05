@@ -10,6 +10,26 @@
   letter-spacing: 1px;
 }
 
+.header-settings-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header-settings-btn {
+  right: 20px;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+}
+
 .main {
   min-height: calc(66.67vh - 1.25rem);
 }
@@ -96,6 +116,13 @@
 
 .modal-header {
   font-size: 1.5rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 700px) {
+  .header-settings-btn {
+    right: 10px;
+  }
 }
 
 @keyframes pulseRing {
