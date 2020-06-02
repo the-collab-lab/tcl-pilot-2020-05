@@ -9,6 +9,7 @@ function App() {
   const [marker, allowMarker] = useState(false);
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
   const [displayInformation, setDisplayInformation] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -59,9 +60,23 @@ function App() {
     navigator.geolocation.getCurrentPosition(success, error, options);
   };
 
+  const openModal = () => {
+    setDisplayModal(true);
+  };
+
+  const closeModal = (e) => {
+    if (e.target.id === "modal") {
+      setDisplayModal(false);
+    }
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header
+        displayModal={displayModal}
+        openModal={openModal}
+        closeModal={closeModal}
+      />
       <Main map={map} />
       <Footer
         currentPin={currentPin}
