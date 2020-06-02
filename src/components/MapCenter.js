@@ -10,7 +10,7 @@ const MapCenter = ({ userHasPanned }) => {
       role="img"
       aria-label="Map center"
     >
-      🔴
+      ⚫
     </span>
   );
 };
