@@ -17,6 +17,10 @@ const Map = ({
   setUserHasPanned,
   mapsObj,
   setMapsObj,
+  setMapProperties,
+  //handleCenterChanged,
+  onPositionChanged,
+  center,
 }) => {
   useEffect(() => {
     fetchNearbyPlaces(
@@ -34,16 +38,30 @@ const Map = ({
     const { map } = mapsObj;
     map.addListener("center_changed", function () {
       setUserHasPanned(true);
+     // handleCenterChanged();
     });
-  }
+  };
+
+  /*const mapCenterClassnames = userHasPanned ?
+    'map-center active'
+    : 'map-center';*/
+
+  function handleCenterChanged() {
+    const center = this.mapProperties.getCoordinates();
+    if (!center.equals(mapProperties.center.lat, mapProperties.center.lng)) {
+      setMapProperties({ center });
+      setNearbyPlaces();
+    }
+  };
 
   return (
-    <div style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}>
+    <div className="Map" style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyA_jF-TPUl8qTMZ3BKFTrFOolH9wR7NOz4" }}
         center={mapProperties.center}
         zoom={mapProperties.zoom}
         options={{ clickableIcons: false }}
+        handleCenterChanged={handleCenterChanged}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={(map, maps) => handleApiLoaded(map, maps)}
       >
@@ -58,6 +76,9 @@ const Map = ({
               img={place.image}
               setCurrentPin={setCurrentPin}
               setDisplayInformation={setDisplayInformation}
+             // handleCenterChanged={handleCenterChanged}
+             // onPositionChanged={onPositionChanged}
+              center={center}
             />
           ))}
 
@@ -65,11 +86,12 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
-        <MapCenter userHasPanned={userHasPanned} />
+        <MapCenter userHasPanned={userHasPanned} handleCenterChanged={handleCenterChanged} onPositionChanged={onPositionChanged}/>
       </GoogleMapReact>
     </div>
   );
 };
+
 
 Map.propTypes = {
   nearbyPlaces: PropTypes.array.isRequired,
@@ -81,6 +103,8 @@ Map.propTypes = {
   setUserHasPanned: PropTypes.func.isRequired,
   mapsObj: PropTypes.object.isRequired,
   setMapsObj: PropTypes.func.isRequired,
+  onPositionChanged:PropTypes.func.isRequired,
+  handleCenterChanged: PropTypes.func.isRequired,
 };
 
 export default Map;

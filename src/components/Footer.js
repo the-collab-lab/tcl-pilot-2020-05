@@ -17,6 +17,7 @@ const Footer = ({
   );
 
   const defaultFooter = (
+    <section>
     <div>
       <p>
         <strong> Click "Share Location" </strong> to discover interesting
@@ -28,10 +29,11 @@ const Footer = ({
       </p>
       <p>Note: Your location is never stored in the app or on our servers!</p>
       <p>
-        <strong> What 's near me?</strong> Looks and works best when installed
+        <strong> What's near me?</strong> Looks and works best when installed
         on your phone as an app.
       </p>
     </div>
+    </section>
   );
 
   return (

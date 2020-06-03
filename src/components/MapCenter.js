@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const MapCenter = ({ userHasPanned }) => {
+const MapCenter = ({ userHasPanned, handleCenterChanged }) => {
   const mapCenterDisplay = userHasPanned ? null : "none";
 
   return (
@@ -17,6 +17,8 @@ const MapCenter = ({ userHasPanned }) => {
 
 MapCenter.propTypes = {
   userHasPanned: PropTypes.bool.isRequired,
+  handleCenterChanged: PropTypes.func.isRequired
 };
+
 
 export default MapCenter;
