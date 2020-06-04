@@ -11,7 +11,6 @@ function App() {
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
   const [mapsObj, setMapsObj] = useState({});
-  const [setPlace] = useState(null);
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -42,7 +41,7 @@ function App() {
   }
 
   function logError(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
+    console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
   const handleCenterClick = (e) => {
@@ -64,22 +63,20 @@ function App() {
   };
 
   const handleTitleClick = () => {
-   // setPlace(null);
     window.location.reload(false);
   };
 
 
- /* const onPositionChanged = (location) => {
-    console.log(`This the new location onPositionChange:${JSON.stringify(location, undefined, 2)}`);
-    const newLocation = new window.google.maps.LatLng(location.lat, location.lng);
-    // [NOTE]: try using the panTo() from googleMaps to recenter the map ? but don't know how to call it.
-
-    return (
-      <marker
-        position={newLocation}
-      />
-    );
-  }*/
+  /* const onPositionChanged = (location) => {
+     console.log(`This the new location onPositionChange:${JSON.stringify(location, undefined, 2)}`);
+     const newLocation = new window.google.maps.LatLng(location.lat, location.lng);
+     // [NOTE]: try using the panTo() from googleMaps to recenter the map ? but don't know how to call it.
+     return (
+       <marker
+         position={newLocation}
+       />
+     );
+   }*/
 
   const map = (
     <Map
@@ -92,7 +89,6 @@ function App() {
       setUserHasPanned={setUserHasPanned}
       mapsObj={mapsObj}
       setMapsObj={setMapsObj}
-      setPlace={setPlace}
     />
   );
 
@@ -134,6 +130,7 @@ function App() {
         displayInformation={displayInformation}
         handleClick={handleClick}
         marker={marker}
+        handleLocationSharedClick={handleLocationSharedClick}
       // onPositionChanged={onPositionChanged}
       />
     </div>
