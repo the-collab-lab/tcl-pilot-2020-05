@@ -65,9 +65,7 @@ function App() {
   };
 
   const closeModal = (e) => {
-    if (e.target.id === "modal") {
       setDisplayModal(false);
-    }
   };
 
   return (
