@@ -1,11 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function SettingsModal({ closeModal }) {
+export default function SettingsModal({ setDisplayModal }) {
   return (
-    <div id="modal" className="modal-container" >
+    <div id="modal" className="modal-container">
       <section className="modal-content">
-      <img src={"/img/close-x.png"} onClick={(e) => closeModal(e)} className="modal-close-button"/>
+        <img
+          src={"/img/close-x.png"}
+          alt="close icon"
+          onClick={() => setDisplayModal(false)}
+          className="modal-close-button"
+        />
         <h1 className="modal-header">Settings</h1>
       </section>
     </div>
@@ -13,5 +18,5 @@ export default function SettingsModal({ closeModal }) {
 }
 
 SettingsModal.propTypes = {
-  closeModal: PropTypes.func.isRequired,
+  setDisplayModal: PropTypes.func.isRequired,
 };
