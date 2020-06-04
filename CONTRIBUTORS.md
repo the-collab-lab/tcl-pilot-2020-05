@@ -10,3 +10,7 @@
 ## Cohort Mentors
 
 - [Andrew Hedges](https://github.com/segdeha)
+
+## Code of Conduct Point of Contact
+
+- [Lisa Smith](https://github.com/smithwebsmith)

@@ -3,16 +3,82 @@
   justify-content: center;
   align-items: center;
   min-height: 2.5rem;
-  background-color: firebrick;
+  background-color: darkolivegreen;
   color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 600;
   letter-spacing: 1px;
 }
 
+.header-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 20px;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+}
+
+.grey-img {
+  filter: grayscale(1);
+  opacity: 0.65;
+}
+
 .main {
   min-height: calc(66.67vh - 1.25rem);
 }
+
+
+.GoogleMapReact{
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s;
+  user-select: none;
+  width: 24px;
+  z-index: 10;
+}
+
+.map-center {
+  height: 24px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s;
+  user-select: none;
+  width: 24px;
+  z-index: 1;
+}
+
+.map-center.active {
+    opacity: 1;
+  }
+
+.MapCenter {
+  height: 24px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s;
+  user-select: none;
+  width: 24px;
+  z-index: 1;
+}
+
 
 .footer {
   min-height: calc(33.33vh - 1.25rem);
@@ -24,6 +90,10 @@
 
 .footer p {
   margin: 0.75rem 0;
+}
+
+.footer button {
+  cursor: pointer;
 }
 
 .pins {
@@ -39,6 +109,7 @@
   user-select: none;
   width: 10vw;
   z-index: 1;
+  cursor: pointer;
 }
 
 .pins img {
@@ -70,6 +141,7 @@
   width: 300%;
 }
 
+
 @keyframes pulseRing {
   0% {
     transform: scale(0.5);
@@ -89,3 +161,12 @@
     transform: scale(1.1);
   }
 }
+
+
+.MapCenter {
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 10px;
+  width: 10px;
+}
+
