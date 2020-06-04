@@ -11,6 +11,14 @@ const Map = ({
   setCurrentPin,
   setDisplayInformation,
   mapProperties,
+  userHasPanned,
+  setUserHasPanned,
+  mapsObj,
+  setMapsObj,
+  setMapProperties,
+  //handleCenterChanged,
+ // onPositionChanged,
+  center,
 }) => {
   useEffect(() => {
     fetchNearbyPlaces(
@@ -45,6 +53,7 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
+        <MapCenter userHasPanned={userHasPanned} handleCenterChanged={handleCenterChanged} /*onPositionChanged={onPositionChanged}*//>
       </GoogleMapReact>
     </div>
   );
@@ -56,6 +65,12 @@ Map.propTypes = {
   setCurrentPin: PropTypes.func.isRequired,
   setDisplayInformation: PropTypes.func.isRequired,
   mapProperties: PropTypes.object.isRequired,
+  userHasPanned: PropTypes.bool.isRequired,
+  setUserHasPanned: PropTypes.func.isRequired,
+  mapsObj: PropTypes.object.isRequired,
+  setMapsObj: PropTypes.func.isRequired,
+ /* onPositionChanged:PropTypes.func.isRequired,
+  handleCenterChanged: PropTypes.func.isRequired,*/
 };
 
 export default Map;
