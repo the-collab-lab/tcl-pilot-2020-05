@@ -66,18 +66,6 @@ function App() {
     window.location.reload(false);
   };
 
-
-  /* const onPositionChanged = (location) => {
-     console.log(`This the new location onPositionChange:${JSON.stringify(location, undefined, 2)}`);
-     const newLocation = new window.google.maps.LatLng(location.lat, location.lng);
-     // [NOTE]: try using the panTo() from googleMaps to recenter the map ? but don't know how to call it.
-     return (
-       <marker
-         position={newLocation}
-       />
-     );
-   }*/
-
   const map = (
     <Map
       nearbyPlaces={nearbyPlaces}
@@ -131,7 +119,6 @@ function App() {
         handleClick={handleClick}
         marker={marker}
         handleLocationSharedClick={handleLocationSharedClick}
-      // onPositionChanged={onPositionChanged}
       />
     </div>
   );
