@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const MapCenter = ({ userHasPanned, handleCenterChanged }) => {
+const MapCenter = ({ userHasPanned, handleCenterChanged, setNearbyPlaces }) => {
   const mapCenterDisplay = userHasPanned ? null : "none";
+  // if (userHasPanned) {
+  //   setNearbyPlaces();
+  // }
 
   return (
     <span
@@ -17,8 +20,8 @@ const MapCenter = ({ userHasPanned, handleCenterChanged }) => {
 
 MapCenter.propTypes = {
   userHasPanned: PropTypes.bool.isRequired,
-  handleCenterChanged: PropTypes.func.isRequired
+  handleCenterChanged: PropTypes.func.isRequired,
+  setNearbyPlaces: PropTypes.func.isRequired,
 };
-
 
 export default MapCenter;

@@ -18,8 +18,8 @@ const Map = ({
   mapsObj,
   setMapsObj,
   setMapProperties,
-  //handleCenterChanged,
-  // onPositionChanged,
+  setHandleIdle,
+  handleIdle,
   center,
 }) => {
   useEffect(() => {
@@ -33,21 +33,23 @@ const Map = ({
   if (!isObjEmpty(mapsObj)) {
     const { map } = mapsObj;
     map.addListener("center_changed", function () {
+      const panCoords = map.getCenter();
+      const panLat = panCoords.lat();
+      const panLng = panCoords.lng();
+      console.log("center_changed");
+      setHandleIdle(
+        map.addListener("idle", function () {
+          // handleIdle;
+        })
+      );
       setUserHasPanned(true);
-      // handleCenterChanged();
+      handleCenterChanged(panLat, panLng);
     });
   }
-
-  function handleCenterChanged() {
-    const center = {
-      latitude: mapProperties.center.lat,
-      longitude: mapProperties.center.lng,
-    };
-    // this.mapProperties.getCoordinates();
-    if (!center.equals(mapProperties.center.lat, mapProperties.center.lng)) {
-      setMapProperties({ center });
-      setNearbyPlaces();
-    }
+  // map.addListener("idle", function () {}),
+  function handleCenterChanged(panLat, panLng) {
+    // maps.event.removeListener(idleEvent);
+    fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
   }
 
   return (
@@ -88,6 +90,7 @@ const Map = ({
         />
         <MapCenter
           userHasPanned={userHasPanned}
+          setNearbyPlaces={setNearbyPlaces}
           // handleCenterChanged={handleCenterChanged}
           // onPositionChanged={onPositionChanged}
         />

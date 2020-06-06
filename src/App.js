@@ -11,6 +11,7 @@ function App() {
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
   const [mapsObj, setMapsObj] = useState({});
+  // const [handleIdle, setHandleIdle] = null;
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -25,7 +26,6 @@ function App() {
     },
     zoom: 11,
     panning: false,
-   // onPositionChanged: () => {},
   });
 
   function getCoordinates(pos) {
@@ -64,18 +64,6 @@ function App() {
     navigator.geolocation.getCurrentPosition(getCoordinates, logError, options);
   };
 
-  const onPositionChanged = (location) => {
-    console.log(`This the new location onPositionChange:${JSON.stringify(location, undefined, 2)}`);
-    const newLocation = new window.google.maps.LatLng(location.lat, location.lng);
-    // [NOTE]: try using the panTo() from googleMaps to recenter the map ? but don't know how to call it.
-
-    return (
-      <marker
-        position={newLocation}
-      />
-    );
-  }
-
   const map = (
     <Map
       nearbyPlaces={nearbyPlaces}
@@ -87,6 +75,8 @@ function App() {
       setUserHasPanned={setUserHasPanned}
       mapsObj={mapsObj}
       setMapsObj={setMapsObj}
+      // handleIdle={handleIdle}
+      // setHandleIdle={setHandleIdle}
     />
   );
 
@@ -102,7 +92,6 @@ function App() {
         displayInformation={displayInformation}
         handleLocationSharedClick={handleLocationSharedClick}
         marker={marker}
-        onPositionChanged={onPositionChanged}
       />
     </div>
   );
