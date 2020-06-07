@@ -92,6 +92,8 @@ Map.propTypes = {
   setUserHasPanned: PropTypes.func.isRequired,
   mapsObj: PropTypes.object.isRequired,
   setMapsObj: PropTypes.func.isRequired,
+  setHome: PropTypes.func.isRequired,
+  home: PropTypes.object.isRequired,
 };
 
 export default Map;

@@ -1,7 +1,7 @@
 import React from "react";
 import { firstCap } from "../lib/DescriptionRules";
 
-const PinDescription = ({ title, image, description }) => {
+const PinDescription = ({ title, image, description, }) => {
   const DEFAULT_IMAGE = "/img/default-thumb.png";
   const wikipedia = `https://www.wikipedia.org/search-redirect.php?search=${title}&family=wikipedia&hiddenLanguageInput=en`;
 

@@ -11,6 +11,7 @@ function App() {
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
   const [mapsObj, setMapsObj] = useState({});
+  const [home, setHome] = useState(null);
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -63,8 +64,8 @@ function App() {
   };
 
   const handleTitleClick = () => {
-    window.location.reload(false);
-  };
+    setHome(null);
+  }
 
   const map = (
     <Map
@@ -76,6 +77,7 @@ function App() {
       userHasPanned={userHasPanned}
       setUserHasPanned={setUserHasPanned}
       mapsObj={mapsObj}
+      setHome={setHome}
       setMapsObj={setMapsObj}
     />
   );
@@ -118,6 +120,7 @@ function App() {
         displayInformation={displayInformation}
         handleClick={handleClick}
         marker={marker}
+        home={home}
         handleLocationSharedClick={handleLocationSharedClick}
       />
     </div>
