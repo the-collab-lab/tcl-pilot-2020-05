@@ -18,8 +18,8 @@ const Map = ({
   mapsObj,
   setMapsObj,
   setMapProperties,
-  setHandleIdle,
-  handleIdle,
+  // setHandleIdle,
+  // handleIdle,
   center,
 }) => {
   useEffect(() => {
@@ -37,11 +37,11 @@ const Map = ({
       const panLat = panCoords.lat();
       const panLng = panCoords.lng();
       console.log("center_changed");
-      setHandleIdle(
-        map.addListener("idle", function () {
-          // handleIdle;
-        })
-      );
+      // setHandleIdle(
+      //   map.addListener("idle", function () {
+      //     // handleIdle;
+      //   })
+      // );
       setUserHasPanned(true);
       handleCenterChanged(panLat, panLng);
     });
