@@ -16,13 +16,11 @@
   align-items: center;
   justify-content: center;
   padding: 2px;
+  top: 8px;
+  right: 20px;
   border: none;
   background: transparent;
   cursor: pointer;
-}
-
-.header-settings-btn {
-  right: 20px;
 }
 
 .header img {
