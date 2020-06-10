@@ -11,7 +11,6 @@ function App() {
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
   const [mapsObj, setMapsObj] = useState({});
-  const [home, setHome] = useState(null);
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -45,12 +44,7 @@ function App() {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
-  const handleCenterClick = (e) => {
-    const { map } = mapsObj;
-    e.preventDefault();
-    map.setCenter(mapProperties.center);
-    setUserHasPanned(false);
-  };
+  
 
   const handleLocationSharedClick = () => {
     allowMarker(true);
@@ -62,10 +56,6 @@ function App() {
 
     navigator.geolocation.getCurrentPosition(getCoordinates, logError, options);
   };
-
-  const handleTitleClick = () => {
-    setHome(null);
-  }
 
   const map = (
     <Map

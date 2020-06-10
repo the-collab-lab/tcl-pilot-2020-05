@@ -1,9 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Header = ({ userHasPanned, handleCenterClick, handleTitleClick, setDisplayInformation }) => {
+const Header = ({ userHasPanned, setDisplayInformation }) => {
   const greyImg = userHasPanned ? null : "grey-img";
 
+  const handleCenterClick = (e) => {
+    const { map } = mapsObj;
+    e.preventDefault();
+    map.setCenter(mapProperties.center);
+    setUserHasPanned(false);
+  };
   return (
     <header className="header">
       <button className="header-btn" onClick={(handleCenterClick)} to="/">
@@ -21,7 +27,7 @@ const Header = ({ userHasPanned, handleCenterClick, handleTitleClick, setDisplay
 Header.propTypes = {
   userHasPanned: PropTypes.bool.isRequired,
   handleCenterClick: PropTypes.func.isRequired,
-  handleTitleClick: PropTypes.func.isRequired
+  setDisplayInformation: PropTypes.func.isRequired
 };
 
 export default Header;
