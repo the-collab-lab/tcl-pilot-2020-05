@@ -67,7 +67,6 @@ function App() {
       userHasPanned={userHasPanned}
       setUserHasPanned={setUserHasPanned}
       mapsObj={mapsObj}
-      setHome={setHome}
       setMapsObj={setMapsObj}
     />
   );
