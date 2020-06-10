@@ -1,19 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Header = ({ userHasPanned, handleCenterClick, handleTitleClick }) => {
+const Header = ({ userHasPanned, handleCenterClick, handleTitleClick, setDisplayInformation }) => {
   const greyImg = userHasPanned ? null : "grey-img";
 
   return (
     <header className="header">
-      <button className="header-btn" onClick={handleCenterClick} to="/">
+      <button className="header-btn" onClick={(handleCenterClick)} to="/">
         <img
           src="/img/center-on-me.png"
           alt="center on me"
           className={greyImg}
         />
       </button>
-      <button className="welcome" onClick={handleTitleClick}>What's near me?</button>
+      <button className="welcome" onClick={() => setDisplayInformation(false)}>What's near me?</button>
     </header>
   );
 };

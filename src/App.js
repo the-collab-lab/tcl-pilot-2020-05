@@ -113,6 +113,7 @@ function App() {
         userHasPanned={userHasPanned}
         handleCenterClick={handleCenterClick}
         handleTitleClick={handleTitleClick}
+        setDisplayInformation={setDisplayInformation}
       />
       <Main map={map} />
       <Footer
