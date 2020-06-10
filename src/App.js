@@ -44,7 +44,7 @@ function App() {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
-  
+
 
   const handleLocationSharedClick = () => {
     allowMarker(true);
@@ -100,8 +100,6 @@ function App() {
     <div className="App">
       <Header
         userHasPanned={userHasPanned}
-        handleCenterClick={handleCenterClick}
-        handleTitleClick={handleTitleClick}
         setDisplayInformation={setDisplayInformation}
       />
       <Main map={map} />
@@ -110,7 +108,6 @@ function App() {
         displayInformation={displayInformation}
         handleClick={handleClick}
         marker={marker}
-        home={home}
         handleLocationSharedClick={handleLocationSharedClick}
       />
     </div>
