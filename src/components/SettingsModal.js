@@ -12,7 +12,21 @@ export default function SettingsModal({ setDisplayModal }) {
           className="modal-close-button"
         />
         <h1 className="modal-header">Settings</h1>
-        <input type="range" min="0" max="30" step="5" />
+        <div className="modal-range-container">
+          <label for="delay-slider">
+            Set how frequently the app will fetch new places. Values are in
+            seconds.
+          </label>
+          <input
+            type="range"
+            id="delay-slider"
+            className="delay-slider"
+            name="delay-slider"
+            min="0"
+            max="30"
+            step="5"
+          />
+        </div>
       </section>
     </div>
   );
