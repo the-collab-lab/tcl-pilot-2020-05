@@ -13,7 +13,7 @@ export default function SettingsModal({ setDisplayModal }) {
         />
         <h1 className="modal-header">Settings</h1>
         <div className="modal-range-container">
-          <label for="delay-slider">
+          <label htmlFor="delay-slider">
             Set how frequently the app will fetch new places. Values are in
             seconds.
           </label>
@@ -24,6 +24,7 @@ export default function SettingsModal({ setDisplayModal }) {
             name="delay-slider"
             min="0"
             max="30"
+            defaultValue="15"
             step="5"
           />
         </div>
