@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState, Fragment}from "react";
 import PropTypes from "prop-types";
 import PinDescription from "./PinDescription";
+import VideosModal from "./VideosModal"
 
 const Footer = ({
   currentPin,
@@ -15,28 +16,36 @@ const Footer = ({
       image={currentPin.image}
     />
   );
+  const [VideoModal, setVideoModal] = useState(false);
 
   const defaultFooter = (
     <section>
-    <div>
-      <p>
-        <strong> Click "Share Location" </strong> to discover interesting
-        landmarks around you from Wikipedia
-      </p>
-      <p>
-        <strong> Tap on a marker </strong> on the map and more information about
-        it will show up in this space. Have fun!
-      </p>
-      <p>Note: Your location is never stored in the app or on our servers!</p>
-      <p>
-        <strong> What's near me?</strong> Looks and works best when installed
-        on your phone as an app.
-      </p>
-    </div>
+      <div>
+        <p>
+          <strong> Click "Share Location" </strong> to discover interesting
+          landmarks around you from Wikipedia
+        </p>
+        <p>
+          <strong> Tap on a marker </strong> on the map and more information
+          about it will show up in this space. Have fun!
+        </p>
+        <p>Note: Your location is never stored in the app or on our servers!</p>
+        <p>
+          <strong> What's near me?</strong> Looks and works best when installed
+          on your phone as an app.
+        </p>
+        <button onClick={() => setVideoModal(true)}>
+          Click here for How to install
+        </button>
+      </div>
     </section>
   );
 
   return (
+    <Fragment>
+
+      {VideoModal && <VideosModal setVideoModal={setVideoModal} />}
+
     <footer className="footer">
       <h1>
         {marker ? (
@@ -47,7 +56,8 @@ const Footer = ({
       </h1>
 
       {displayInformation ? descriptionFooter : defaultFooter}
-    </footer>
+  </footer>
+  </Fragment>
   );
 };
 
@@ -56,6 +66,7 @@ Footer.propTypes = {
   displayInformation: PropTypes.bool.isRequired,
   handleLocationSharedClick: PropTypes.func.isRequired,
   marker: PropTypes.bool.isRequired,
+  setVideoModal: PropTypes.func.isRequired
 };
 
 export default Footer;
