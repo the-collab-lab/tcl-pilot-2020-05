@@ -12,6 +12,7 @@ export default function SettingsModal({ setDisplayModal }) {
           className="modal-close-button"
         />
         <h1 className="modal-header">Settings</h1>
+        <input type="range" min="0" max="30" step="5" />
       </section>
     </div>
   );
