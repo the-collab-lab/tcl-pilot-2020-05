@@ -5,6 +5,8 @@ import {Collapsible, CollapsibleItem, Icon } from 'react-materialize';
 export default function VideosModal({ setVideoModal }) {
   return (
     <div id="modal" className="modal-container">
+      {/* React Materalize import */}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"></link>
       <section className="modal-content">
         <img
           src={"/img/close-x.png"}
