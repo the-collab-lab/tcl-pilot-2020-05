@@ -181,6 +181,14 @@
   width: 80vw;
   height: 80vh;
 }
+.modal-range-pic-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-value{
+  text-align: center;
+}
 
 .modal-header {
   font-size: 1.5rem;
