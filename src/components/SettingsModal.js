@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export default function SettingsModal({ setDisplayModal }) {
   const DEFAULT_VALUE = 15;
-  const [sliderValue, setSliderValue] = useState(DEFAULT_VALUE);
+  const [sliderValue, setSliderValue] = useState(
+    localStorage.getItem("sliderValueInLocalStorage") || DEFAULT_VALUE
+  );
+
+  useEffect(() => {
+    localStorage.setItem("sliderValueInLocalStorage", sliderValue);
+  }, [sliderValue]);
 
   const handleSliderChange = (e) => {
     const { value } = e.target;
