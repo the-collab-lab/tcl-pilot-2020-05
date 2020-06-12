@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 export default function SettingsModal({ setDisplayModal }) {
-  const [sliderValue, setSliderValue] = useState(15);
+  const DEFAULT_VALUE = 15;
+  const [sliderValue, setSliderValue] = useState(DEFAULT_VALUE);
 
-  const handleSlide = (event) => {
-    const { value } = event.target;
+  const handleSliderChange = (e) => {
+    const { value } = e.target;
     setSliderValue(value);
-
-    console.log("value from slider:", event.target.value);
   };
 
   return (
@@ -45,9 +44,9 @@ export default function SettingsModal({ setDisplayModal }) {
             name="delay-slider"
             min="0"
             max="30"
-            defaultValue="15"
+            value={sliderValue}
             step="5"
-            onInput={(event) => handleSlide(event)}
+            onChange={(e) => handleSliderChange(e)}
           />
           <div className="slider-value">{sliderValue}</div>
         </div>
