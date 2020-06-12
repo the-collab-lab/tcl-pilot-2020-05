@@ -28,9 +28,15 @@ export default function SettingsModal({ setDisplayModal }) {
             seconds.
           </label>
           <div className="modal-range-pic-container">
-            <img src="./img/slider-walker.png" alt="walker emoji" />
-            <img src="./img/slider-bike.png" alt="bike emoji" />
-            <img src="./img/slider-car.png" alt="car-emoji" />
+            <span className="modal-range-pic">
+              <img src="./img/slider-car.png" alt="car-emoji" />
+            </span>
+            <span className="modal-range-pic">
+              <img src="./img/slider-bike.png" alt="bike emoji" />
+            </span>
+            <span className="modal-range-pic slider-walker">
+              <img src="./img/slider-walker.png" alt="walker emoji" />
+            </span>
           </div>
           <input
             type="range"
