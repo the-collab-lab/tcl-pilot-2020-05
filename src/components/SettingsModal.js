@@ -13,12 +13,16 @@ export default function SettingsModal({ setDisplayModal }) {
   return (
     <div id="modal" className="modal-container">
       <section className="modal-content">
-        <img
-          src={"/img/close-x.png"}
-          alt="close icon"
-          onClick={() => setDisplayModal(false)}
+        <button
           className="modal-close-button"
-        />
+          onClick={() => setDisplayModal(false)}
+        >
+          <img
+            src={"/img/close-x.png"}
+            alt="close icon"
+            className="modal-close-img"
+          />
+        </button>
         <h1 className="modal-header">Settings</h1>
 
         <div className="modal-range-container">
@@ -27,15 +31,24 @@ export default function SettingsModal({ setDisplayModal }) {
             seconds.
           </label>
           <div className="modal-range-pic-container">
-            <span className="modal-range-pic">
-              <img src="./img/slider-car.png" alt="car-emoji" />
-            </span>
-            <span className="modal-range-pic">
-              <img src="./img/slider-bike.png" alt="bike emoji" />
-            </span>
-            <span className="modal-range-pic slider-walker">
-              <img src="./img/slider-walker.png" alt="walker emoji" />
-            </span>
+            <figure className="modal-range-pic">
+              <img
+                src="./img/slider-car.png"
+                alt="No delay is best when traveling by car"
+              />
+            </figure>
+            <figure className="modal-range-pic">
+              <img
+                src="./img/slider-bike.png"
+                alt="A 15 second delay is best when traveling by bicycle"
+              />
+            </figure>
+            <figure className="modal-range-pic slider-walker">
+              <img
+                src="./img/slider-walker.png"
+                alt="A 30 second delay is best when traveling by foot"
+              />
+            </figure>
           </div>
           <input
             type="range"
@@ -46,9 +59,14 @@ export default function SettingsModal({ setDisplayModal }) {
             max="30"
             value={sliderValue}
             step="5"
-            onChange={(e) => handleSliderChange(e)}
+            onChange={handleSliderChange}
           />
-          <div className="slider-value">{sliderValue}</div>
+          <div
+            aria-label="current fetch frequency selection by number of seconds"
+            className="slider-value"
+          >
+            {sliderValue}
+          </div>
         </div>
       </section>
     </div>

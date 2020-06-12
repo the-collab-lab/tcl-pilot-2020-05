@@ -164,11 +164,22 @@
 
 .modal-close-button {
   position: absolute;
-  right: 10vw;
   top: inherit;
-  z-index: 1;
-  height: 2.5vh;
+  right: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  height: auto;
+  border: none;
+  background: transparent;
   cursor: pointer;
+  z-index: 1;
+}
+
+.modal-close-img {
+  height: 20px;
+  width: 20px;
 }
 
 /* sets root appearance of modal itself once opened */
@@ -200,6 +211,7 @@
 
 .modal-range-pic {
   width: 50px;
+  margin: 0;
 }
 
 .slider-walker {
