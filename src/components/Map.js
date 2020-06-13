@@ -18,8 +18,6 @@ const Map = ({
   mapsObj,
   setMapsObj,
   setMapProperties,
-  // setHandleIdle,
-  // handleIdle,
   center,
 }) => {
   useEffect(() => {
@@ -36,19 +34,11 @@ const Map = ({
       const panCoords = map.getCenter();
       const panLat = panCoords.lat();
       const panLng = panCoords.lng();
-      console.log("center_changed");
-      // setHandleIdle(
-      //   map.addListener("idle", function () {
-      //     // handleIdle;
-      //   })
-      // );
       setUserHasPanned(true);
       handleCenterChanged(panLat, panLng);
     });
   }
-  // map.addListener("idle", function () {}),
   function handleCenterChanged(panLat, panLng) {
-    // maps.event.removeListener(idleEvent);
     fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
   }
 
@@ -65,7 +55,6 @@ const Map = ({
         handleCenterChanged={handleCenterChanged}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={setMapsObj}
-        // onGoogleApiLoaded={(map, maps) => handleApiLoaded(map, maps)}
       >
         {nearbyPlaces &&
           nearbyPlaces.map((place, index) => (
@@ -78,8 +67,6 @@ const Map = ({
               img={place.image}
               setCurrentPin={setCurrentPin}
               setDisplayInformation={setDisplayInformation}
-              // handleCenterChanged={handleCenterChanged}
-              // onPositionChanged={onPositionChanged}
               center={center}
             />
           ))}
@@ -91,8 +78,6 @@ const Map = ({
         <MapCenter
           userHasPanned={userHasPanned}
           setNearbyPlaces={setNearbyPlaces}
-          // handleCenterChanged={handleCenterChanged}
-          // onPositionChanged={onPositionChanged}
         />
       </GoogleMapReact>
     </div>

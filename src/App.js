@@ -11,7 +11,6 @@ function App() {
   const [displayInformation, setDisplayInformation] = useState(false);
   const [userHasPanned, setUserHasPanned] = useState(false);
   const [mapsObj, setMapsObj] = useState({});
-  // const [handleIdle, setHandleIdle] = null;
   const [currentPin, setCurrentPin] = useState({
     title: null,
     description: null,
@@ -75,8 +74,6 @@ function App() {
       setUserHasPanned={setUserHasPanned}
       mapsObj={mapsObj}
       setMapsObj={setMapsObj}
-      // handleIdle={handleIdle}
-      // setHandleIdle={setHandleIdle}
     />
   );
 
