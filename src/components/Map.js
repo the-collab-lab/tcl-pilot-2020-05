@@ -18,8 +18,6 @@ const Map = ({
   mapsObj,
   setMapsObj,
   setMapProperties,
-  //handleCenterChanged,
-  // onPositionChanged,
   center,
 }) => {
   useEffect(() => {
@@ -34,7 +32,6 @@ const Map = ({
     const { map } = mapsObj;
     map.addListener("center_changed", function () {
       setUserHasPanned(true);
-      // handleCenterChanged();
     });
   }
 
@@ -43,7 +40,7 @@ const Map = ({
       latitude: mapProperties.center.lat,
       longitude: mapProperties.center.lng,
     };
-    // this.mapProperties.getCoordinates();
+
     if (!center.equals(mapProperties.center.lat, mapProperties.center.lng)) {
       setMapProperties({ center });
       setNearbyPlaces();
@@ -63,7 +60,6 @@ const Map = ({
         handleCenterChanged={handleCenterChanged}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={setMapsObj}
-        // onGoogleApiLoaded={(map, maps) => handleApiLoaded(map, maps)}
       >
         {nearbyPlaces &&
           nearbyPlaces.map((place, index) => (
@@ -76,8 +72,6 @@ const Map = ({
               img={place.image}
               setCurrentPin={setCurrentPin}
               setDisplayInformation={setDisplayInformation}
-              // handleCenterChanged={handleCenterChanged}
-              // onPositionChanged={onPositionChanged}
               center={center}
             />
           ))}
@@ -86,11 +80,7 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
-        <MapCenter
-          userHasPanned={userHasPanned}
-          // handleCenterChanged={handleCenterChanged}
-          // onPositionChanged={onPositionChanged}
-        />
+        <MapCenter userHasPanned={userHasPanned} />
       </GoogleMapReact>
     </div>
   );
@@ -106,8 +96,6 @@ Map.propTypes = {
   setUserHasPanned: PropTypes.func.isRequired,
   mapsObj: PropTypes.object.isRequired,
   setMapsObj: PropTypes.func.isRequired,
-  onPositionChanged: PropTypes.func.isRequired,
-  handleCenterChanged: PropTypes.func.isRequired,
 };
 
 export default Map;
