@@ -75,10 +75,7 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
-        <MapCenter
-          userHasPanned={userHasPanned}
-          setNearbyPlaces={setNearbyPlaces}
-        />
+        <MapCenter userHasPanned={userHasPanned} />
       </GoogleMapReact>
     </div>
   );
