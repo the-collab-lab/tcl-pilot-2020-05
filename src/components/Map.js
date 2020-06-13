@@ -40,7 +40,9 @@ const Map = ({
   }
   function handleCenterChanged(panLat, panLng) {
     fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
+    });
   }
+
 
   return (
     <div
@@ -91,8 +93,6 @@ Map.propTypes = {
   setUserHasPanned: PropTypes.func.isRequired,
   mapsObj: PropTypes.object.isRequired,
   setMapsObj: PropTypes.func.isRequired,
-  onPositionChanged: PropTypes.func.isRequired,
-  handleCenterChanged: PropTypes.func.isRequired,
 };
 
 export default Map;
