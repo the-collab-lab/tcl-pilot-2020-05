@@ -71,7 +71,7 @@ function App() {
     />
   );
 
-  const handleClick = () => {
+  const handlePositionClick = () => {
     allowMarker(true);
     const options = {
       enableHighAccuracy: true,
@@ -101,12 +101,13 @@ function App() {
       <Header
         userHasPanned={userHasPanned}
         setDisplayInformation={setDisplayInformation}
+        map={map}
       />
       <Main map={map} />
       <Footer
         currentPin={currentPin}
         displayInformation={displayInformation}
-        handleClick={handleClick}
+        handlePositionClick={handlePositionClick}
         marker={marker}
         handleLocationSharedClick={handleLocationSharedClick}
       />

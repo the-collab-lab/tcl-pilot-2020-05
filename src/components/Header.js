@@ -10,9 +10,10 @@ const Header = ({ userHasPanned, setDisplayInformation,setUserHasPanned, mapProp
     map.setCenter(mapProperties.center);
     setUserHasPanned(false);
   };
+
   return (
     <header className="header">
-      <button className="header-btn" onClick={(handleCenterClick)} to="/">
+      <button className="header-btn" onClick={handleCenterClick} to="/">
         <img
           src="/img/center-on-me.png"
           alt="center on me"
@@ -27,7 +28,7 @@ const Header = ({ userHasPanned, setDisplayInformation,setUserHasPanned, mapProp
 Header.propTypes = {
   userHasPanned: PropTypes.bool.isRequired,
   handleCenterClick: PropTypes.func.isRequired,
-  setDisplayInformation: PropTypes.func.isRequired
+  setDisplayInformation: PropTypes.func.isRequired,
 };
 
 export default Header;
