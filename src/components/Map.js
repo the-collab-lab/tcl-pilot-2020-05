@@ -38,11 +38,10 @@ const Map = ({
       handleCenterChanged(panLat, panLng);
     });
   }
+
   function handleCenterChanged(panLat, panLng) {
     fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
-    });
   }
-
 
   return (
     <div
