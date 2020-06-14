@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Collapsible, CollapsibleItem, Icon } from 'react-materialize';
+import {Collapsible, CollapsibleItem} from 'react-materialize';
 
 export default function VideosModal({ setVideoModal }) {
   return (
@@ -23,7 +23,6 @@ export default function VideosModal({ setVideoModal }) {
           >
             <video
               className="App-info-how-to"
-              //poster={`/img/screen-grab-ios.png`}
               controls
               preload="metadata"
             >
@@ -37,14 +36,13 @@ export default function VideosModal({ setVideoModal }) {
           >
               <video
                 className="App-info-how-to"
-              // poster={`/img/screen-grab-android.png`}
                 controls
                 preload="metadata"
               >
                 <source src={`/img/screen-cast-android.mp4`} type="video/mp4" />
               </video>
           </CollapsibleItem>
-        
+
         </Collapsible>
       </section>
     </div>
