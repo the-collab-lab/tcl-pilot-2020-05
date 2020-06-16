@@ -8,12 +8,17 @@ export default function VideosModal({ setVideoModal }) {
       {/* React Materalize import */}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"></link>
       <section className="modal-content">
+        <button
+          className="modal-close-button"
+          onClick={() => setVideoModal(false)}
+        >
         <img
           src={"/img/close-x.png"}
           alt="close icon"
-          onClick={() => setVideoModal(false)}
           className="modal-close-button"
         />
+        </button>
+        <div>
         <Collapsible accordion={true} className="modal-accordian">
           <CollapsibleItem
               expanded={false}
@@ -43,6 +48,7 @@ export default function VideosModal({ setVideoModal }) {
           </CollapsibleItem>
 
         </Collapsible>
+        </div>
       </section>
     </div>
   );
