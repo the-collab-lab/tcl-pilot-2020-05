@@ -99,9 +99,11 @@ function App() {
   return (
     <div className="App">
       <Header
-        userHasPanned={userHasPanned}
         setDisplayInformation={setDisplayInformation}
-        map={map}
+        mapsObj={mapsObj}
+        mapProperties={mapProperties}
+        userHasPanned={userHasPanned}
+        setUserHasPanned={setUserHasPanned}
       />
       <Main map={map} />
       <Footer

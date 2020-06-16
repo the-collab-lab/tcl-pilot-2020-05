@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Header = ({ userHasPanned, setDisplayInformation,setUserHasPanned, mapProperties,map,mapsObj }) => {
+const Header = ({ setDisplayInformation, userHasPanned, setUserHasPanned, mapProperties, mapsObj }) => {
   const greyImg = userHasPanned ? null : "grey-img";
 
   const handleCenterClick = (e) => {
