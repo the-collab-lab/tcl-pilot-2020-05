@@ -258,9 +258,11 @@
   }
 }
 
+
 .MapCenter {
   border-radius: 50%;
   box-sizing: border-box;
   height: 10px;
   width: 10px;
 }
+

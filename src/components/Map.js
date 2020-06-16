@@ -31,20 +31,16 @@ const Map = ({
   if (!isObjEmpty(mapsObj)) {
     const { map } = mapsObj;
     map.addListener("center_changed", function () {
+      const panCoords = map.getCenter();
+      const panLat = panCoords.lat();
+      const panLng = panCoords.lng();
       setUserHasPanned(true);
+      handleCenterChanged(panLat, panLng);
     });
   }
 
-  function handleCenterChanged() {
-    const center = {
-      latitude: mapProperties.center.lat,
-      longitude: mapProperties.center.lng,
-    };
-
-    if (!center.equals(mapProperties.center.lat, mapProperties.center.lng)) {
-      setMapProperties({ center });
-      setNearbyPlaces();
-    }
+  function handleCenterChanged(panLat, panLng) {
+    fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
   }
 
   return (
