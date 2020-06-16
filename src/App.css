@@ -72,9 +72,7 @@
 
 .App-info-how-to {
   display: block;
-  height: 60vh;
-  margin: auto;
-  width: auto;
+  height: 40vh;
 }
 
 .MapCenter {
@@ -183,6 +181,10 @@
   padding: 1rem;
   width: 80vw;
   height: 80vh;
+}
+.modal-accordian {
+margin: 0 auto;
+margin-top: 15px;
 }
 
 .modal-header {

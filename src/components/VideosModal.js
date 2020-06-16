@@ -14,11 +14,10 @@ export default function VideosModal({ setVideoModal }) {
           onClick={() => setVideoModal(false)}
           className="modal-close-button"
         />
-        <h1 className="modal-header">Videos</h1>
-        <Collapsible accordion={true}>
+        <Collapsible accordion={true} className="modal-accordian">
           <CollapsibleItem
               expanded={false}
-              header="iOS Instructions"
+              header="IOS Instructions"
               node="div"
           >
             <video
