@@ -32,18 +32,18 @@ const Map = ({
   if (!isObjEmpty(mapsObj)) {
     const { map } = mapsObj;
     map.addListener("center_changed", function () {
+      const panCoords = map.getCenter();
+      const panLat = panCoords.lat();
+      const panLng = panCoords.lng();
       setUserHasPanned(true);
+      handleCenterChanged(panLat, panLng);
     });
   };
 
 
-  function handleCenterChanged() {
-    const center = this.mapProperties.getCoordinates();
-    if (!center.equals(mapProperties.center.lat, mapProperties.center.lng)) {
-      setMapProperties({ center });
-      setNearbyPlaces();
-    }
-  };
+  function handleCenterChanged(panLat, panLng) {
+    fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
+  }
 
   return (
     <div className="Map" style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}>
@@ -92,8 +92,6 @@ Map.propTypes = {
   setUserHasPanned: PropTypes.func.isRequired,
   mapsObj: PropTypes.object.isRequired,
   setMapsObj: PropTypes.func.isRequired,
-  setHome: PropTypes.func.isRequired,
-  home: PropTypes.object.isRequired,
 };
 
 export default Map;

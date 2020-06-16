@@ -53,8 +53,7 @@ Footer.propTypes = {
   currentPin: PropTypes.object.isRequired,
   displayInformation: PropTypes.bool.isRequired,
   handleLocationSharedClick: PropTypes.func.isRequired,
-  marker: PropTypes.bool.isRequired,
-  home: PropTypes.bool.isRequired,
+  marker: PropTypes.bool.isRequired
 };
 
 export default Footer;

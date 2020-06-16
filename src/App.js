@@ -24,6 +24,7 @@ function App() {
       lng: -8.4756,
     },
     zoom: 11,
+    panning: false,
   });
 
   function getCoordinates(pos) {
