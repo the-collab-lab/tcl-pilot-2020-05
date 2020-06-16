@@ -31,7 +31,13 @@ const Header = ({ setDisplayInformation, userHasPanned, setUserHasPanned, mapPro
             className={greyImg}
           />
         </button>
-        What's near me?
+
+        <button 
+            className="welcome"
+            onClick={() => setDisplayInformation(false)}
+        >
+                What's near me?
+        </button>
         <button
           className="header-settings-btn"
           onClick={() => setDisplayModal(true)}
