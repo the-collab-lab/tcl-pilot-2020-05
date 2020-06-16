@@ -18,7 +18,7 @@ function App() {
   });
 
   const [mapProperties, setMapProperties] = useState({
-    // default map properties - center currently set to Cork, Ireland
+    // default map properties - center currently set to Cork, Ireland
     center: {
       lat: 51.8985,
       lng: -8.4756,
@@ -42,15 +42,10 @@ function App() {
   }
 
   function logError(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
+    console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
-  const handleCenterClick = (e) => {
-    const { map } = mapsObj;
-    e.preventDefault();
-    map.setCenter(mapProperties.center);
-    setUserHasPanned(false);
-  };
+
 
   const handleLocationSharedClick = () => {
     allowMarker(true);
@@ -77,18 +72,47 @@ function App() {
     />
   );
 
+  const handlePositionClick = () => {
+    allowMarker(true);
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+    function success(pos) {
+      const crd = pos.coords;
+      let latitude = crd.latitude;
+      let longitude = crd.longitude;
+      setMapProperties({
+        ...mapProperties,
+        center: {
+          lat: latitude,
+          lng: longitude,
+        },
+      });
+    }
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  };
+
   return (
     <div className="App">
       <Header
+        setDisplayInformation={setDisplayInformation}
+        mapsObj={mapsObj}
+        mapProperties={mapProperties}
         userHasPanned={userHasPanned}
-        handleCenterClick={handleCenterClick}
+        setUserHasPanned={setUserHasPanned}
       />
       <Main map={map} />
       <Footer
         currentPin={currentPin}
         displayInformation={displayInformation}
-        handleLocationSharedClick={handleLocationSharedClick}
+        handlePositionClick={handlePositionClick}
         marker={marker}
+        handleLocationSharedClick={handleLocationSharedClick}
       />
     </div>
   );
