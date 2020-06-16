@@ -51,7 +51,7 @@ const Map = ({
         bootstrapURLKeys={{ key: "AIzaSyA_jF-TPUl8qTMZ3BKFTrFOolH9wR7NOz4" }}
         center={mapProperties.center}
         zoom={mapProperties.zoom}
-        options={{ clickableIcons: false }}
+        options={{ clickableIcons: false, gestureHandling: "greedy" }}
         handleCenterChanged={handleCenterChanged}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={setMapsObj}
