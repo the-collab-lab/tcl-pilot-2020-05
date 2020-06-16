@@ -15,7 +15,7 @@ export default function VideosModal({ setVideoModal }) {
         <img
           src={"/img/close-x.png"}
           alt="close icon"
-          className="modal-close-button"
+          className="modal-close-img"
         />
         </button>
         <div>
