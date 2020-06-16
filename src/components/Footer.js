@@ -38,7 +38,7 @@ const Footer = ({
           Click here for How to install
         </button>
       </div>
-    </section>
+     </section>
   );
 
   return (

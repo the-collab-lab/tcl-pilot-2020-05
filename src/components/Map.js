@@ -18,8 +18,6 @@ const Map = ({
   mapsObj,
   setMapsObj,
   setMapProperties,
-  //handleCenterChanged,
-  // onPositionChanged,
   center,
 }) => {
   useEffect(() => {
@@ -29,41 +27,34 @@ const Map = ({
     ).then((res) => setNearbyPlaces(res));
   }, [mapProperties.center.lat, mapProperties.center.lng, setNearbyPlaces]);
 
+
   // only runs if maps object is populated
   if (!isObjEmpty(mapsObj)) {
     const { map } = mapsObj;
     map.addListener("center_changed", function () {
+      const panCoords = map.getCenter();
+      const panLat = panCoords.lat();
+      const panLng = panCoords.lng();
       setUserHasPanned(true);
-      // handleCenterChanged();
+      handleCenterChanged(panLat, panLng);
     });
-  }
+  };
 
-  function handleCenterChanged() {
-    const center = {
-      latitude: mapProperties.center.lat,
-      longitude: mapProperties.center.lng,
-    };
-    // this.mapProperties.getCoordinates();
-    if (!center.equals(mapProperties.center.lat, mapProperties.center.lng)) {
-      setMapProperties({ center });
-      setNearbyPlaces();
-    }
+
+  function handleCenterChanged(panLat, panLng) {
+    fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
   }
 
   return (
-    <div
-      className="Map"
-      style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}
-    >
+    <div className="Map" style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyA_jF-TPUl8qTMZ3BKFTrFOolH9wR7NOz4" }}
         center={mapProperties.center}
         zoom={mapProperties.zoom}
-        options={{ clickableIcons: false }}
+        options={{ clickableIcons: false, gestureHandling: "greedy" }}
         handleCenterChanged={handleCenterChanged}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={setMapsObj}
-        // onGoogleApiLoaded={(map, maps) => handleApiLoaded(map, maps)}
       >
         {nearbyPlaces &&
           nearbyPlaces.map((place, index) => (
@@ -76,8 +67,6 @@ const Map = ({
               img={place.image}
               setCurrentPin={setCurrentPin}
               setDisplayInformation={setDisplayInformation}
-              // handleCenterChanged={handleCenterChanged}
-              // onPositionChanged={onPositionChanged}
               center={center}
             />
           ))}
@@ -86,15 +75,12 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
-        <MapCenter
-          userHasPanned={userHasPanned}
-          // handleCenterChanged={handleCenterChanged}
-          // onPositionChanged={onPositionChanged}
-        />
+        <MapCenter userHasPanned={userHasPanned} handleCenterChanged={handleCenterChanged}/>
       </GoogleMapReact>
     </div>
   );
 };
+
 
 Map.propTypes = {
   nearbyPlaces: PropTypes.array.isRequired,
@@ -106,8 +92,6 @@ Map.propTypes = {
   setUserHasPanned: PropTypes.func.isRequired,
   mapsObj: PropTypes.object.isRequired,
   setMapsObj: PropTypes.func.isRequired,
-  onPositionChanged: PropTypes.func.isRequired,
-  handleCenterChanged: PropTypes.func.isRequired,
 };
 
 export default Map;
