@@ -18,7 +18,6 @@ const Footer = ({
 
   const defaultFooter = (
     <section>
-    <div>
       <p>
         <strong> Click "Share Location" </strong> to discover interesting
         landmarks around you from Wikipedia
@@ -32,7 +31,6 @@ const Footer = ({
         <strong> What's near me?</strong> Looks and works best when installed
         on your phone as an app.
       </p>
-    </div>
     </section>
   );
 
@@ -55,7 +53,7 @@ Footer.propTypes = {
   currentPin: PropTypes.object.isRequired,
   displayInformation: PropTypes.bool.isRequired,
   handleLocationSharedClick: PropTypes.func.isRequired,
-  marker: PropTypes.bool.isRequired,
+  marker: PropTypes.bool.isRequired
 };
 
 export default Footer;
