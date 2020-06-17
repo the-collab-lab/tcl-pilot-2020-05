@@ -22,14 +22,14 @@ const Map = ({
 }) => {
 
   let [pendingPromise, setPendingPromise] = useState(false);
-  
+
   useEffect(() => {
     if (!pendingPromise) {
       fetchNearbyPlaces(
         mapProperties.center.lat,
         mapProperties.center.lng,
         setPendingPromise
-      ).then((res) => setNearbyPlaces(res), setPendingPromise(false));
+      ).then((res) => {setNearbyPlaces(res); setPendingPromise(false);});
     }
   }, [mapProperties.center.lat, mapProperties.center.lng, setNearbyPlaces]);
 
@@ -47,7 +47,7 @@ const Map = ({
 
 
   function handleCenterChanged(panLat, panLng) {
-    fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
+    fetchNearbyPlaces(panLat, panLng, setPendingPromise).then((res) => setNearbyPlaces(res));
   }
 
   return (
