@@ -16,7 +16,6 @@ const fetchNearbyPlacesPromise = async (lat, lng) => {
 //executes the fetch, and formats data for consumption by Pin component
 async function fetchNearbyPlaces(lat, lng, setPendingPromise) {
   setPendingPromise(true);
-  console.log("running promise");
   let places = await fetchNearbyPlacesPromise(lat, lng).then(
     (res) => res.query.pages
   );

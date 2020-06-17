@@ -31,23 +31,28 @@ const Map = ({
         setPendingPromise
       ).then((res) => {setNearbyPlaces(res); setPendingPromise(false);});
     }
-  }, [mapProperties.center.lat, mapProperties.center.lng, setNearbyPlaces]);
+  }, []);
 
   // only runs if maps object is populated
-  if (!isObjEmpty(mapsObj)) {
+  if (!isObjEmpty(mapsObj) && !pendingPromise) {
     const { map } = mapsObj;
     map.addListener("center_changed", function () {
       const panCoords = map.getCenter();
       const panLat = panCoords.lat();
       const panLng = panCoords.lng();
       setUserHasPanned(true);
-      handleCenterChanged(panLat, panLng);
+      if(!pendingPromise){
+        handleCenterChanged(panLat, panLng);
+      }
     });
   };
 
 
   function handleCenterChanged(panLat, panLng) {
-    fetchNearbyPlaces(panLat, panLng, setPendingPromise).then((res) => setNearbyPlaces(res));
+    if (!pendingPromise) {
+      console.log("handleCenterChange")
+      fetchNearbyPlaces(panLat, panLng, setPendingPromise).then((res) => setNearbyPlaces(res));
+    }
   }
 
   return (
@@ -57,7 +62,6 @@ const Map = ({
         center={mapProperties.center}
         zoom={mapProperties.zoom}
         options={{ clickableIcons: false, gestureHandling: "greedy" }}
-        handleCenterChanged={handleCenterChanged}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={setMapsObj}
       >
