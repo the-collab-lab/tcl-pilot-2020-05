@@ -1,19 +1,52 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+//import { fetchDelayUntil } from "../lib/FetchDelayUntil"
+
 
 export default function SettingsModal({ setDisplayModal }) {
   const DEFAULT_VALUE = 15;
   const [sliderValue, setSliderValue] = useState(
     localStorage.getItem("sliderValueInLocalStorage") || DEFAULT_VALUE
   );
+  const [fetchDelay, setFetchDelay] = useState(
+    localStorage.getItem('FETCH_DELAY') || DEFAULT_VALUE
+  );
 
   useEffect(() => {
     localStorage.setItem("sliderValueInLocalStorage", sliderValue);
-  }, [sliderValue]);
+    localStorage.setItem('FETCH_DELAY', fetchDelay);
+  }, [sliderValue,fetchDelay]);
 
   const handleSliderChange = (e) => {
     const { value } = e.target;
     setSliderValue(value);
+  };
+
+  /*const fetchDelayUntil = {
+    get: () => {
+      let value = localStorage.getItem('FETCH_DELAY');
+      if (null === value) {
+        value = 15;
+      }
+      else {
+        value = +value;
+        if (value < 0) {
+          value = 0;
+        }
+        else if (value > 30) {
+          value = 30;
+        }
+      }
+      return value;
+    },
+    set: value => {
+      localStorage.setItem('FETCH_DELAY', value);
+    }
+  }*/
+
+  const handleFetchDelayChange = (e) => {
+    const { value } = e.target;
+    setFetchDelay(value);
   };
 
   return (
@@ -65,7 +98,7 @@ export default function SettingsModal({ setDisplayModal }) {
             max="30"
             value={sliderValue}
             step="5"
-            onChange={handleSliderChange}
+            onChange={handleSliderChange && handleFetchDelayChange}
           />
           <div
             aria-label="current fetch frequency selection by number of seconds"
