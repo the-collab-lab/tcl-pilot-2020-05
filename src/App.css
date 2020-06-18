@@ -194,6 +194,8 @@
   width: 20px;
 }
 
+
+
 /* sets root appearance of modal itself once opened */
 .modal-content {
   display: inline-block;
@@ -206,7 +208,8 @@
 }
 .modal-accordian {
 margin: 0 auto;
-margin-top: 15px;
+margin-top: 35px;
+width:50%;
 }
 
 .modal-header {
@@ -243,6 +246,24 @@ margin-top: 15px;
   text-align: center;
   font-size: 1.25rem;
 }
+/*Videos Modal styling*/
+
+.modal-content-videos {
+  display: inline-block;
+  background-color: white;
+  box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 1rem;
+  width: 80vw;
+  height: 80vh;
+}
+
+.modal-accordian {
+margin: 0 auto;
+margin-top: 35px;
+width:50%;
+}
+
 
 /* Mobile Styles */
 @media (max-width: 700px) {

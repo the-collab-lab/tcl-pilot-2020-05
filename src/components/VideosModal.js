@@ -9,13 +9,13 @@ export default function VideosModal({ setVideoModal }) {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"></link>
       <section className="modal-content-videos">
         <button
-          className="modal-close-button-videos"
+          className="modal-close-button"
           onClick={() => setVideoModal(false)}
         >
         <img
           src={"/img/close-x.png"}
           alt="close icon"
-          className="modal-close-img-videos"
+          className="modal-close-img"
         />
         </button>
         <div className="modal-accordian">
