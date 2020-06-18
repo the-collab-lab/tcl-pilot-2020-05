@@ -17,7 +17,6 @@ const Map = ({
   setUserHasPanned,
   mapsObj,
   setMapsObj,
-  setMapProperties,
   center,
 }) => {
   useEffect(() => {
@@ -27,6 +26,9 @@ const Map = ({
     ).then((res) => setNearbyPlaces(res));
   }, [mapProperties.center.lat, mapProperties.center.lng, setNearbyPlaces]);
 
+  const fetchDelay = 5000;
+  // const fetchDelay = localStorage.getItem("sliderValueInLocalStorage");
+  // variable with localStorage value not currently being recognized by the setTimeout function
 
   // only runs if maps object is populated
   if (!isObjEmpty(mapsObj)) {
@@ -36,17 +38,21 @@ const Map = ({
       const panLat = panCoords.lat();
       const panLng = panCoords.lng();
       setUserHasPanned(true);
-      handleCenterChanged(panLat, panLng);
+      setTimeout(() => {
+        handleCenterChanged(panLat, panLng);
+      }, fetchDelay);
     });
-  };
-
+  }
 
   function handleCenterChanged(panLat, panLng) {
     fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
   }
 
   return (
-    <div className="Map" style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}>
+    <div
+      className="Map"
+      style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}
+    >
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyA_jF-TPUl8qTMZ3BKFTrFOolH9wR7NOz4" }}
         center={mapProperties.center}
@@ -75,12 +81,14 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
-        <MapCenter userHasPanned={userHasPanned} handleCenterChanged={handleCenterChanged}/>
+        <MapCenter
+          userHasPanned={userHasPanned}
+          handleCenterChanged={handleCenterChanged}
+        />
       </GoogleMapReact>
     </div>
   );
 };
-
 
 Map.propTypes = {
   nearbyPlaces: PropTypes.array.isRequired,
