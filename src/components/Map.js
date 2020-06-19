@@ -26,9 +26,8 @@ const Map = ({
     ).then((res) => setNearbyPlaces(res));
   }, [mapProperties.center.lat, mapProperties.center.lng, setNearbyPlaces]);
 
-  const fetchDelay = 5000;
-  // const fetchDelay = localStorage.getItem("sliderValueInLocalStorage");
-  // variable with localStorage value not currently being recognized by the setTimeout function
+  // converts value in seconds to be milliseconds for the setTimeout
+  const fetchDelay = localStorage.getItem("sliderValueInLocalStorage") * 1000;
 
   // only runs if maps object is populated
   if (!isObjEmpty(mapsObj)) {
