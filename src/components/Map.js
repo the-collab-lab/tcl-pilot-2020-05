@@ -44,8 +44,13 @@ const Map = ({
       if(!pendingPromise){
         handleCenterChanged(panLat, panLng);
       }
-    });
+    })
+    map.addListener("drag_end", function (event) {
+        document.getElementById('lat').value = this.position.lat();
+        document.getElementById('lng').value = this.position.lng();
+      });
   };
+
 
 
   function handleCenterChanged(panLat, panLng) {
