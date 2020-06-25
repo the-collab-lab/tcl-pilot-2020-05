@@ -32,19 +32,24 @@ const Map = ({
   // only runs if maps object is populated
   if (!isObjEmpty(mapsObj)) {
     const { map } = mapsObj;
-    map.addListener("center_changed", function () {
+   /* map.addListener("center_changed", function () {
       const panCoords = map.getCenter();
       const panLat = panCoords.lat();
       const panLng = panCoords.lng();
-      setUserHasPanned(true);
+      setUserHasPanned(true);*/
+    map.addListener("idle", function (){
+      console.log('Map is now idle');
+     /* const panLat = panCoords.lat();
+      const panLng = panCoords.lng();*/
+      setUserHasPanned(false);
       setTimeout(() => {
-        handleCenterChanged(panLat, panLng);
+        handleCenterChanged('lat','lng');
       }, fetchDelay);
     });
   }
 
-  function handleCenterChanged(panLat, panLng) {
-    fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
+  function handleCenterChanged() {
+    fetchNearbyPlaces('lat','lng').then((res) => setNearbyPlaces(res));
   }
 
   return (
