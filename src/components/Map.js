@@ -36,7 +36,16 @@ const Map = ({
   // only runs if maps object is populated
   if (!isObjEmpty(mapsObj) && !pendingPromise) {
     const { map } = mapsObj;
-    map.addListener("center_changed", function () {
+    // map.addListener("center_changed", function () {
+    //   const panCoords = map.getCenter();
+    //   const panLat = panCoords.lat();
+    //   const panLng = panCoords.lng();
+    //   setUserHasPanned(true);
+    //   if(!pendingPromise){
+    //     handleCenterChanged(panLat, panLng);
+    //   }
+    // })
+    map.addListener("dragend", function (event) {
       const panCoords = map.getCenter();
       const panLat = panCoords.lat();
       const panLng = panCoords.lng();
@@ -44,10 +53,8 @@ const Map = ({
       if(!pendingPromise){
         handleCenterChanged(panLat, panLng);
       }
-    })
-    map.addListener("drag_end", function (event) {
-        document.getElementById('lat').value = this.position.lat();
-        document.getElementById('lng').value = this.position.lng();
+        // document.getElementById('lat').value = this.position.lat();
+        // document.getElementById('lng').value = this.position.lng();
       });
   };
 
