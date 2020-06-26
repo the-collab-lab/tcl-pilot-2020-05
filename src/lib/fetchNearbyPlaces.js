@@ -17,7 +17,7 @@ const fetchNearbyPlacesPromise = async (lat, lng) => {
 async function fetchNearbyPlaces(lat, lng, setPendingPromise) {
   setPendingPromise(true);
   let places = await fetchNearbyPlacesPromise(lat, lng).then(
-    (res) => res.query.pages
+    (res) => res.query.pages?res.query.pages:[]
   );
   if (places) {
     return places.map((place) => {
