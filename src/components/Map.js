@@ -17,7 +17,6 @@ const Map = ({
   setUserHasPanned,
   mapsObj,
   setMapsObj,
-  setMapProperties,
   center,
 }) => {
 
@@ -32,19 +31,12 @@ const Map = ({
       ).then((res) => {setNearbyPlaces(res); setPendingPromise(false);});
     }
   }, []);
+  // converts value in seconds to be milliseconds for the setTimeout
+  const fetchDelay = localStorage.getItem("sliderValueInLocalStorage") * 1000;
 
   // only runs if maps object is populated
   if (!isObjEmpty(mapsObj) && !pendingPromise) {
     const { map } = mapsObj;
-    // map.addListener("center_changed", function () {
-    //   const panCoords = map.getCenter();
-    //   const panLat = panCoords.lat();
-    //   const panLng = panCoords.lng();
-    //   setUserHasPanned(true);
-    //   if(!pendingPromise){
-    //     handleCenterChanged(panLat, panLng);
-    //   }
-    // })
     map.addListener("dragend", function (event) {
       const panCoords = map.getCenter();
       const panLat = panCoords.lat();
@@ -53,12 +45,11 @@ const Map = ({
       if(!pendingPromise){
         handleCenterChanged(panLat, panLng);
       }
-        // document.getElementById('lat').value = this.position.lat();
-        // document.getElementById('lng').value = this.position.lng();
-      });
+      setTimeout(() => {
+        handleCenterChanged(panLat, panLng);
+      }, fetchDelay);
+     });
   };
-
-
 
   function handleCenterChanged(panLat, panLng) {
     if (!pendingPromise) {
@@ -68,7 +59,10 @@ const Map = ({
   }
 
   return (
-    <div className="Map" style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}>
+    <div
+      className="Map"
+      style={{ height: "calc(66.67vh - 1.25rem)", width: "100%" }}
+    >
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyA_jF-TPUl8qTMZ3BKFTrFOolH9wR7NOz4" }}
         center={mapProperties.center}
@@ -96,12 +90,14 @@ const Map = ({
           lat={mapProperties.center.lat}
           lng={mapProperties.center.lng}
         />
-        <MapCenter userHasPanned={userHasPanned} handleCenterChanged={handleCenterChanged}/>
+        <MapCenter
+          userHasPanned={userHasPanned}
+          handleCenterChanged={handleCenterChanged}
+        />
       </GoogleMapReact>
     </div>
   );
 };
-
 
 Map.propTypes = {
   nearbyPlaces: PropTypes.array.isRequired,
