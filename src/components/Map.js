@@ -42,18 +42,17 @@ const Map = ({
       const panLat = panCoords.lat();
       const panLng = panCoords.lng();
       setUserHasPanned(true);
-      if(!pendingPromise){
-        handleCenterChanged(panLat, panLng);
-      }
       setTimeout(() => {
-        handleCenterChanged(panLat, panLng);
+        if(!pendingPromise){
+          console.log("ping")
+          handleCenterChanged(panLat, panLng);
+        }
       }, fetchDelay);
      });
   };
 
   function handleCenterChanged(panLat, panLng) {
     if (!pendingPromise) {
-      console.log("handleCenterChange")
       fetchNearbyPlaces(panLat, panLng, setPendingPromise).then((res) => setNearbyPlaces(res));
     }
   }
