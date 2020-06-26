@@ -6,6 +6,7 @@ export default function SettingsModal({ setDisplayModal }) {
   const [sliderValue, setSliderValue] = useState(
     localStorage.getItem("sliderValueInLocalStorage") || DEFAULT_VALUE
   );
+  
 
   useEffect(() => {
     localStorage.setItem("sliderValueInLocalStorage", sliderValue);

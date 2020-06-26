@@ -20,35 +20,53 @@ const Map = ({
   center,
 }) => {
 
-  let [pendingPromise, setPendingPromise] = useState(false);
-
+  const timeout = (fetchDelay, pendingPromise) => {
+    return setTimeout(() => {
+      if(!pendingPromise){
+        handleCenterChanged(panLat, panLng);
+      }
+    }, fetchDelay);
+  }
+  const [pendingPromise, setPendingPromise] = useState(false);
+  const [fetchDelay, setFetchDelay] = useState(localStorage.getItem("sliderValueInLocalStorage") * 1000);
+  const [currentTimeout, setCurrentTimeout] = useState(timeout(fetchDelay, pendingPromise));
+  const [firstFetch, setFirstFetch] = useState(true);
+  
   useEffect(() => {
-    if (!pendingPromise) {
+    const ls_fetchDelay = localStorage.getItem("sliderValueInLocalStorage") * 1000;
+    if( ls_fetchDelay !== fetchDelay){
+      setFetchDelay(ls_fetchDelay);
+      setCurrentTimeout(timeout(ls_fetchDelay, pendingPromise));
+    }
+
+    if (!pendingPromise && firstFetch) {
       fetchNearbyPlaces(
         mapProperties.center.lat,
         mapProperties.center.lng,
         setPendingPromise
       ).then((res) => {setNearbyPlaces(res); setPendingPromise(false);});
     }
-  }, []);
+    if (!isObjEmpty(mapsObj) && !pendingPromise && !firstFetch) {
+      const { map } = mapsObj;
+      map.addListener("dragstart", (e) => {
+        currentTimeout;
+      })
+
+      map.addListener("dragend", function (event) {
+        clearTimeout(currentTimeout);
+        const panCoords = map.getCenter();
+        const panLat = panCoords.lat();
+        const panLng = panCoords.lng();
+        setUserHasPanned(true);
+        currentTimeout;
+        
+      });
+    };
+  }, [fetchDelay]);
   // converts value in seconds to be milliseconds for the setTimeout
-  const fetchDelay = localStorage.getItem("sliderValueInLocalStorage") * 1000;
+ 
 
   // only runs if maps object is populated
-  if (!isObjEmpty(mapsObj) && !pendingPromise) {
-    const { map } = mapsObj;
-    map.addListener("dragend", function (event) {
-      const panCoords = map.getCenter();
-      const panLat = panCoords.lat();
-      const panLng = panCoords.lng();
-      setUserHasPanned(true);
-      setTimeout(() => {
-        if(!pendingPromise){
-          handleCenterChanged(panLat, panLng);
-        }
-      }, fetchDelay);
-     });
-  };
 
   function handleCenterChanged(panLat, panLng) {
     if (!pendingPromise) {
