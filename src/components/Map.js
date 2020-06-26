@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import GoogleMapReact from "google-map-react";
 import fetchNearbyPlaces from "../lib/fetchNearbyPlaces";
@@ -19,32 +19,41 @@ const Map = ({
   setMapsObj,
   center,
 }) => {
-  useEffect(() => {
-    fetchNearbyPlaces(
-      mapProperties.center.lat,
-      mapProperties.center.lng
-    ).then((res) => setNearbyPlaces(res));
-  }, [mapProperties.center.lat, mapProperties.center.lng, setNearbyPlaces]);
 
+  let [pendingPromise, setPendingPromise] = useState(false);
+
+  useEffect(() => {
+    if (!pendingPromise) {
+      fetchNearbyPlaces(
+        mapProperties.center.lat,
+        mapProperties.center.lng,
+        setPendingPromise
+      ).then((res) => {setNearbyPlaces(res); setPendingPromise(false);});
+    }
+  }, []);
   // converts value in seconds to be milliseconds for the setTimeout
   const fetchDelay = localStorage.getItem("sliderValueInLocalStorage") * 1000;
 
   // only runs if maps object is populated
-  if (!isObjEmpty(mapsObj)) {
+  if (!isObjEmpty(mapsObj) && !pendingPromise) {
     const { map } = mapsObj;
-    map.addListener("center_changed", function () {
+    map.addListener("dragend", function (event) {
       const panCoords = map.getCenter();
       const panLat = panCoords.lat();
       const panLng = panCoords.lng();
       setUserHasPanned(true);
       setTimeout(() => {
-        handleCenterChanged(panLat, panLng);
+        if(!pendingPromise){
+          handleCenterChanged(panLat, panLng);
+        }
       }, fetchDelay);
-    });
-  }
+     });
+  };
 
   function handleCenterChanged(panLat, panLng) {
-    fetchNearbyPlaces(panLat, panLng).then((res) => setNearbyPlaces(res));
+    if (!pendingPromise) {
+      fetchNearbyPlaces(panLat, panLng, setPendingPromise).then((res) => setNearbyPlaces(res));
+    }
   }
 
   return (
@@ -57,7 +66,6 @@ const Map = ({
         center={mapProperties.center}
         zoom={mapProperties.zoom}
         options={{ clickableIcons: false, gestureHandling: "greedy" }}
-        handleCenterChanged={handleCenterChanged}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={setMapsObj}
       >
