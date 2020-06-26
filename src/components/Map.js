@@ -44,7 +44,6 @@ const Map = ({
       setUserHasPanned(true);
       setTimeout(() => {
         if(!pendingPromise){
-          console.log("ping")
           handleCenterChanged(panLat, panLng);
         }
       }, fetchDelay);
