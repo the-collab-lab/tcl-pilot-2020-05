@@ -12,7 +12,7 @@ const Pin = ({ image, place, setCurrentPin, setDisplayInformation }) => {
       {image ? (
         <img src={image} alt={place.title} />
       ) : (
-        <img src={DEFAULT_IMAGE} alt={"default place image"} />
+        <img src={DEFAULT_IMAGE} alt={"default place"} />
       )}
     </div>
   );

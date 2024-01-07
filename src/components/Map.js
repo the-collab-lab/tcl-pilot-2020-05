@@ -19,7 +19,6 @@ const Map = ({
   setMapsObj,
   center,
 }) => {
-
   let [pendingPromise, setPendingPromise] = useState(false);
 
   useEffect(() => {
@@ -28,8 +27,12 @@ const Map = ({
         mapProperties.center.lat,
         mapProperties.center.lng,
         setPendingPromise
-      ).then((res) => {setNearbyPlaces(res); setPendingPromise(false);});
+      ).then((res) => {
+        setNearbyPlaces(res);
+        setPendingPromise(false);
+      });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // converts value in seconds to be milliseconds for the setTimeout
   const fetchDelay = localStorage.getItem("sliderValueInLocalStorage") * 1000;
@@ -43,16 +46,18 @@ const Map = ({
       const panLng = panCoords.lng();
       setUserHasPanned(true);
       setTimeout(() => {
-        if(!pendingPromise){
+        if (!pendingPromise) {
           handleCenterChanged(panLat, panLng);
         }
       }, fetchDelay);
-     });
-  };
+    });
+  }
 
   function handleCenterChanged(panLat, panLng) {
     if (!pendingPromise) {
-      fetchNearbyPlaces(panLat, panLng, setPendingPromise).then((res) => setNearbyPlaces(res));
+      fetchNearbyPlaces(panLat, panLng, setPendingPromise).then((res) =>
+        setNearbyPlaces(res)
+      );
     }
   }
 
